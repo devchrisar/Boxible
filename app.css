@@ -1,9 +1,506 @@
-body {
-    background-color: #e5edd1;
+:root {
+    --nav-width: 92px;
+
+    /*?===== Colores =====*/
+    --first-color: #D262B3;
+    --bg-color: #12192C;
+    --sub-color: #B6CEFC;
+    --white-color: #FFF;
+
+    /*?===== Fuente y tipografia =====*/
+    --body-font: 'Poppins', sans-serif;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+
+    /*?===== z index =====*/
+    --z-fixed: 100;
 }
 
 
 
+body {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    position: relative;
+    margin: 0;
+    padding: 2rem 0 0 6.75rem;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    transition: .5s;
+    background-color: #FAFAFF;
+}
+
+.hidden_BD {
+    overflow: hidden;
+}
+
+.LoadBd {
+    position: relative;
+    height: 100vh;
+}
+
+/**===== BASE =====*/
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
+h1 {
+    margin: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+/**===== Loader=====*/
+.contenedor_Load {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.contenedor_Load .preloader {
+    animation: rotate 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
+}
+
+@keyframes rotate {
+    50% {
+        transform: rotate(360deg);
+    }
+
+    100% {
+        transform: rotate(720deg);
+    }
+}
+
+.preloader span {
+    position: absolute;
+    display: block;
+    height: 64px;
+    width: 64px;
+    background: #8231D0;
+    border: 1px solid #8231D0;
+    border-radius: 100%;
+}
+
+.preloader span:nth-child(1) {
+    transform: translate(-28px, -28px);
+    animation: shape_1 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
+}
+
+@keyframes shape_1 {
+    60% {
+        transform: scale(0.4);
+    }
+}
+
+.preloader span:nth-child(2) {
+    transform: translate(28px, -28px);
+    animation: shape_2 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
+}
+
+@keyframes shape_2 {
+    40% {
+        transform: scale(0.4);
+    }
+}
+
+.preloader span:nth-child(3) {
+    position: relative;
+    border-radius: 0px;
+    transform: scale(0.98) rotate(-45deg);
+    animation: shape_3 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
+}
+
+@keyframes shape_3 {
+    50% {
+        border-radius: 100%;
+        transform: scale(0.5) rotate(-45deg);
+    }
+
+    100% {
+        transform: scale(0.98) rotate(-45deg);
+    }
+}
+
+.shadow {
+    position: relative;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    height: 16px;
+    width: 64px;
+    border-radius: 50%;
+    background-color: #d9d9d9;
+    border: 1px solid #d9d9d9;
+    animation: shadow 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
+}
+
+@keyframes shadow {
+    50% {
+        transform: translateX(-50%) scale(0.5);
+        border-color: #f2f2f2;
+    }
+}
+
+/**===== Fin Loader =====*/
+
+/**===== animación =====*/
+#bodymo {
+    width: 400px;
+    height: 400px;
+}
+
+/**===== Fin animación =====*/
+.Form_titu {
+    font: bold 34px "Century Schoolbook", Georgia, Times, serif;
+    color: #8231D0;
+    line-height: 90%;
+    margin: .2em 0 .4em 0;
+    letter-spacing: -2px;
+}
+
+.Form_titu-ls {
+    color: #D262B3;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 12px;
+    letter-spacing: 3px;
+    text-align: center;
+    text-shadow: #bb11ca 1px 1px;
+    text-transform: uppercase
+}
+
+/**===== l NAV =====*/
+.l-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--nav-width);
+    height: 100vh;
+    background-color: var(--bg-color);
+    color: var(--white-color);
+    padding: 1.5rem 1.5rem 2rem;
+    transition: .5s;
+    z-index: var(--z-fixed);
+}
+
+/**===== NAV =====*/
+.nav {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.nav__brand {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.nav__toggle {
+    font-size: 1.25rem;
+    padding: .75rem;
+    cursor: pointer;
+}
+
+.nav__logo {
+    color: var(--white-color);
+    font-weight: 600;
+}
+
+.nav__link {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    align-items: center;
+    column-gap: .75rem;
+    padding: .75rem;
+    color: var(--white-color);
+    border-radius: .5rem;
+    margin-bottom: 1rem;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.nav__link:hover {
+    background-color: var(--first-color);
+}
+
+.nav__icon {
+    font-size: 1.25rem;
+}
+
+.nav__name {
+    font-size: var(--small-font-size);
+}
+
+/**Expander menu*/
+.expander {
+    width: calc(var(--nav-width) + 9.25rem);
+}
+
+/*?Add padding body*/
+.body-pd {
+    padding: 2rem 0 0 16rem;
+}
+
+/*?Active links menu*/
+.active {
+    background-color: var(--first-color);
+}
+
+/*?COLLAPSE*/
+.collapse {
+    grid-template-columns: 20px max-content 1fr;
+}
+
+.collapse__link {
+    justify-self: flex-end;
+    transition: .5s;
+}
+
+.collapse__menu {
+    display: none;
+    padding: .75rem 2.25rem;
+}
+
+.collapse__sublink {
+    color: var(--sub-color);
+    font-size: var(--small-font-size);
+}
+
+.collapse__sublink:hover {
+    color: var(--white-color);
+}
+
+/*?Show collapse*/
+.showCollapse {
+    display: block;
+}
+
+/*?Rotate icon*/
+.rotate {
+    transform: rotate(180deg);
+}
+
+#info_menu {
+    word-wrap: pre-wrap;
+    white-space: normal;
+    width: 130px;
+}
+
+#pic_menu {
+    width: 45px;
+    border-radius: 100%;
+}
+
+/**===== FORMULARIO =====*/
+.container {
+    margin: 10px 50px;
+}
+
+.form-group {
+    margin: 10px;
+}
+
+.form-group input {
+    width: 100%;
+    border: solid 1px #eee;
+    padding: 15px 10px;
+}
+
+.form-group button,
+#todo_btn {
+    width: 200px;
+    padding: 15px;
+    margin-left: 250px;
+    background: transparent;
+    color: #9B287B;
+    border: solid 1px #9B287B;
+    border-radius: 10%;
+    cursor: pointer;
+    transition: all .38s ease-in-out;
+}
+
+.form-group button:hover {
+    background: #9B287B;
+    color: #fff;
+}
+
+#todo_btn:hover {
+    background: #9B287B;
+    color: #fff;
+}
+
+table tr td {
+    border: solid 1px #eee;
+    padding: 10px;
+}
+
+/*?mensajerror form*/
+label.error {
+    position: relative;
+    background: #b67ffe;
+    padding: 5px 10px;
+    min-width: 5px;
+    border-radius: 2px;
+    border-left: 8px solid #4c0487;
+    pointer-events: none;
+}
+
+label.error::before {
+    content: url('https://api.iconify.design/clarity:help-info-line.svg?color=%233c2b8c&height=17');
+    vertical-align: -0.125em;
+}
+
+/*? fin mensajerror form*/
+/**===== FIN FORMULARIO =====*/
+/**===== informacion usuario =====*/
+/*? contenido de la barra de progreso*/
+.ldBar-label:after {
+    content: "XP";
+    font-size: 0.6em;
+}
+
+/**===== FIN informacion usuario =====*/
+/**===== CRONOMETRO =====*/
+.contenedor_Relog {
+    background-color: #20142D;
+    width: 40%;
+    min-width: 500px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    padding: 60px 0;
+    border-radius: 10px;
+}
+
+.valor_relog {
+    position: relative;
+    width: 110%;
+    background: linear-gradient(-135deg,
+            #8231D0,
+            #8c0da5);
+    left: -5%;
+    padding: 40px 0;
+    font-family: 'Roboto mono', monospace;
+    color: #ffffff;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(253, 0, 253, 0.25);
+}
+
+.btn_Relog {
+    width: 80%;
+    margin: 60px auto 0 auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn_Relog button {
+    padding: 10px 20px;
+    background-color: #D262B3;
+    color: #141313;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+}
+
+/**===== FIN CRONOMETRO =====*/
+
+/**===== CALCULADOR IMC =====*/
+.contenedor_imc {
+
+    margin-left: auto;
+    background-color: #20142D;
+    padding: 40px 30px;
+    width: 50%;
+    min-width: 400px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 25px 25px 30px rgba(0, 0, 0, 0.15);
+}
+
+.selec {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.selec span {
+    font-weight: 500;
+}
+
+.selec input[type="range"] {
+    width: 70%;
+    height: 3.5px;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #D262B3;
+    border-radius: 3px;
+    outline: none;
+}
+
+.selec input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 15px;
+    width: 15px;
+    background-color: #D262B3;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#resultado {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-align: center;
+    color: #0be881;
+}
+
+
+#peso-val,
+#altura-val {
+    color: #fff;
+}
+
+#categoria {
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #8327da;
+}
+
+/**===== FIN CALCULADOR IMC =====*/
 
 /* ? paleta de colores
 /*
