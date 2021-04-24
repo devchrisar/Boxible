@@ -19,6 +19,7 @@
 
 
 body {
+    z-index: 200;
     display: grid;
     align-items: center;
     justify-items: center;
@@ -64,6 +65,7 @@ a {
 /**===== Loader=====*/
 .contenedor_Load {
     position: absolute;
+    z-index: 1;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -85,6 +87,7 @@ a {
 
 .preloader span {
     position: absolute;
+    z-index: 1;
     display: block;
     height: 64px;
     width: 64px;
@@ -348,10 +351,6 @@ a {
     color: #fff;
 }
 
-table tr td {
-    border: solid 1px #eee;
-    padding: 10px;
-}
 
 /*?mensajerror form*/
 label.error {
@@ -376,6 +375,58 @@ label.error::before {
 .ldBar-label:after {
     content: "XP";
     font-size: 0.6em;
+}
+
+/*? estilo del usuario*/
+#output,
+#userCard {
+    position: fixed;
+    z-index: -200000000000000000;
+    top: 5%;
+    right: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    justify-self: end;
+    padding: 3rem;
+    max-width: 800px;
+}
+
+#userCard {
+    background-color: #ffffff;
+    background-image: linear-gradient(315deg, #ffffff 0%, #eaeff5 74%);
+    border-radius: 20px;
+    box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+        0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.avatar {
+    border: 10px solid #2a2a72;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+}
+
+.user-info {
+    color: #eee;
+    margin-left: 2rem;
+}
+
+.user-info h2 {
+    margin-top: 0;
+}
+
+#tablaLG tbody,
+tr,
+td {
+    border: none;
+    border-collapse: collapse;
+    padding: 0.5vw;
+    border: none;
+    max-width: 100%;
+    max-height: 10%;
+    background: transparent
 }
 
 /**===== FIN informacion usuario =====*/

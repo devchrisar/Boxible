@@ -5,11 +5,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="#">
+    <link rel="apple-touch-icon" sizes="180x180" href="source/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="source/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="source/favicon-16x16.png">
+    <link rel="manifest" href="source/site.webmanifest">
     <link rel="stylesheet" type="text/css" href="source/loading-bar.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
     <link rel="stylesheet" href="../boxible/app.css">
     <title>Boxible</title>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-functions.js"></script>
 </head>
 
 <body id="body-pd" class="hidden_BD">
@@ -39,11 +46,16 @@
                 <input type="text" name="fage" id="fage" placeholder="Edad" required>
             </div>
             <div class="form-group">
+                <input type="text" name="femail" id="femail" placeholder="Correo Electrónico" required>
+            </div>
+            <div class="form-group">
+                <input type="password" name="fpassW" id="fpassW" placeholder="Contraseña" required>
+            </div>
+            <div class="form-group">
                 <button type="submit" value="Validate!" id="btn_enviarFr">entrar</button>
             </div>
         </form>
 
-        <h2>Usuario</h2>
         <div id="output">
             <!-- espacio donde se guardara la información del usuario -->
         </div>
@@ -111,11 +123,6 @@
         <h2>añade ejercicios a tu rutina</h2>
         <button id="todo_btn">ir</button>
     </div>
-    <div>
-        <h2>ENTREGABLE AJAX</h2>
-        <button id="ajax_btn">ajax</button>
-    </div>
-    <div id="obtener_ajax"></div>
     <!-- <div class="contenedor_imc">
         <div class="selec">
             <input type="range" min="20" max="200" value="20" id="peso" oninput />
@@ -129,6 +136,7 @@
         <p id="resultado">20.0</p>
         <p id="categoria">Saludable</p>
     </div> -->
+
     <script>
         console.log('%cBOXIBLE', 'color:#8231D0;font-size:60px', 'tu app de entrenamiento', 'Ⓒ');
         console.group('Desarrollado por:');
@@ -136,6 +144,8 @@
         console.log('Version 1.0');
         console.groupEnd();
     </script>
+    <script src="../boxible/source/firebase.config.js"></script>
+    <script src="../boxible/utils/definitions.js"></script>
     <script src="../boxible/source/fontawesome.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.8/lottie.min.js'
         integrity='sha512-w58XJ/0dVbEfZVJoJyBUOTMGBWmIW4jEYJSA0898d2L0Ghpum0FvwK7qTuHhkTctApzrchv3Neli+28ajI4+fg=='

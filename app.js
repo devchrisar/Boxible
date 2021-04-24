@@ -1,4 +1,4 @@
-/* global bodymovin */
+/* global bodymovin auth db ldBar fpassW */
 window.onload = function () {
   $('#Encarga').delay(300).fadeOut();
   $('#body-pd').removeClass('hidden_BD');
@@ -20,30 +20,57 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('todo_btn').onclick = function () {
     myonclickFn('../boxible/source/index.html');
   };
+
   //* formulario login
   function dispData() {
     if (localStorage.getItem('formData')) {
-      const { fname, fage } = JSON.parse(localStorage.getItem('formData') || '{}');
+      const { fname, fage, femail } = JSON.parse(localStorage.getItem('formData') || '{}');
+      // ? no llamo a la contraseña porque no me parece correcto guardarla en el localstorage//
       const output = document.getElementById('output');
+      const imgUser = '../boxible/source/logo_Nomark.svg';
       output.innerHTML = `
-  <table>
-    <tbody>
-      <tr>
-        <td>Bienvenido</td>
-        <td>${fname}</td>
-      </tr>
-      <tr>
-        <td>Edad</td>
-        <td>${fage} años</td>
-        </tr>
-        </tbody>
-        </table>
-        <div class="ldBar" data-value="10" data-preset="stripe">
+      <div id="userCard" >
+        <div>
+          <img class="avatar" src="${imgUser}"  alt="${fname}.png" />
         </div>
+        <table id="tablaLG">
+          <tbody>
+            <tr>
+              <td>Bienvenido</td>
+              <td>${fname}</td>
+            </tr>
+            <tr>
+              <td>Edad</td>
+              <td>${fage} años</td>
+              </tr>
+              <tr>
+              <td>Email</td>
+              <td>${femail}</td>
+              </tr>
+          </tbody>
+        </table>
+              <div class="ldBar" data-value="0" data-preset="stripe">
+              </div>
+      <div>
 `;
     }
   }
   dispData();
+  $(document).ready(() => {
+    const b1 = document.querySelector('.ldBar');
+    const b = new ldBar(b1);
+    b.set(0);
+    setInterval(() => {
+      b.set(Math.round(Math.random() * 100));
+    }, 7100);
+  });
+  // //* valido info del formulario a Firebase //
+  // async function Ingresar(femail, fpassW) {
+  //   const creds = await auth.createUserWithEmailAndPassword(femail, fpassW);
+  //   return db.collection('usuarios').doc(creds.user.uid).set({
+  //     fname: document.getElementById('fname').value,
+  //   });
+  // }
   // * login y validación de usuario//
   $('#btn_enviarFr').click(() => {
     if ($('#formulario').valid() === true) {
@@ -51,15 +78,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const formData = {
           fname: document.getElementById('fname').value,
           fage: document.getElementById('fage').value,
+          femail: document.getElementById('femail').value,
         };
         localStorage.setItem('formData', JSON.stringify(formData));
         dispData();
         e.preventDefault();
       };
       document.getElementById('formulario').addEventListener('submit', signUp);
+      // Ingresar(femail, fpassW);
+      // console.log('usuario creado');
     }
     const fname = $('#fname').val();
     const fage = $('#fage').val();
+    const femail = $('#femail').val();
   });
   //* valido el campo ingresado por el usuario ,usa  la libreria jquery validate //
   $('#formulario').validate({
@@ -76,6 +107,14 @@ document.addEventListener('DOMContentLoaded', () => {
         required: true,
         minlength: 3,
         maxlength: 15,
+      },
+      femail: {
+        required: true,
+        email: true,
+      },
+      fpassW: {
+        required: true,
+        minlength: 5,
       },
     },
   });
@@ -115,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const rotate = collapseMenu.previousElementSibling;
       rotate.classList.toggle('rotate');
     });
-  // }
+  }
   // //* ENTREGABLE AJAX usando un block de notas*/
   // // test posiblemente cambie por completo este código por ahora es solo para la entrega
   // function ajax() {
