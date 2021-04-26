@@ -1,5 +1,6 @@
 .eslintrc.json
 package.json
+webpack.config.js
 package-lock.json
 # Logs
 logs
