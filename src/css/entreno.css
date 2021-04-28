@@ -2,29 +2,17 @@
     font-family: 'Oxygen', sans-serif;
 }
 
-body {
-    background-color: #FAFAFF;
-}
-
-.hidden_BD {
-    overflow: hidden;
-}
-
-.LoadBd {
-    position: relative;
-    height: 100vh;
-}
 
 main {
     background-color: #20142d;
-    margin: 50px auto;
+    margin-top: 10px;
+    margin-left: 34%;
     width: 500px;
     font-size: 18px;
     border-radius: 30px;
 }
 
 .titulo-app {
-
     font-family: 'Poppins', sans-serif;
     font-size: 30px;
     color: #e0e5eb;
@@ -33,112 +21,15 @@ main {
         8px 8px 12px rgba(0, 0, 0, 0.08);
     caret-color: #262626;
     outline: none;
+    padding: 30px 20px 20px 20px;
 }
 
-/**===== Loader=====*/
-.contenedor_Load {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.contenedor_Load .preloader {
-    animation: rotate 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
-}
-
-@keyframes rotate {
-    50% {
-        transform: rotate(360deg);
-    }
-
-    100% {
-        transform: rotate(720deg);
-    }
-}
-
-.preloader span {
-    position: absolute;
-    display: block;
-    height: 64px;
-    width: 64px;
-    background: #8231D0;
-    border: 1px solid #8231D0;
-    border-radius: 100%;
-}
-
-.preloader span:nth-child(1) {
-    transform: translate(-28px, -28px);
-    animation: shape_1 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
-}
-
-@keyframes shape_1 {
-    60% {
-        transform: scale(0.4);
-    }
-}
-
-.preloader span:nth-child(2) {
-    transform: translate(28px, -28px);
-    animation: shape_2 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
-}
-
-@keyframes shape_2 {
-    40% {
-        transform: scale(0.4);
-    }
-}
-
-.preloader span:nth-child(3) {
-    position: relative;
-    border-radius: 0px;
-    transform: scale(0.98) rotate(-45deg);
-    animation: shape_3 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
-}
-
-@keyframes shape_3 {
-    50% {
-        border-radius: 100%;
-        transform: scale(0.5) rotate(-45deg);
-    }
-
-    100% {
-        transform: scale(0.98) rotate(-45deg);
-    }
-}
-
-.shadow {
-    position: relative;
-    top: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: block;
-    height: 16px;
-    width: 64px;
-    border-radius: 50%;
-    background-color: #d9d9d9;
-    border: 1px solid #d9d9d9;
-    animation: shadow 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
-}
-
-@keyframes shadow {
-    50% {
-        transform: translateX(-50%) scale(0.5);
-        border-color: #f2f2f2;
-    }
-}
-
-/**===== Fin Loader =====*/
 input,
 button,
 select {
     font-size: 18px;
 }
 
-h1 {
-    padding: 30px 20px 20px 20px;
-    color: #FAFCF5;
-}
 
 #todos {
     padding: 20px;
@@ -172,6 +63,7 @@ h1 {
     cursor: pointer;
     width: 32px;
     height: 32px;
+
 }
 
 .todo button:hover svg {
@@ -208,7 +100,6 @@ h1 {
 
 #add-container form select {
     border: 0;
-    background-color: transparent;
     padding: 5px;
     outline: none;
     width: 30%;
@@ -280,4 +171,5 @@ h1 {
 #itnew,
 #slist {
     color: white;
+    background-color: #3f1d63;
 }

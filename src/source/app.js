@@ -155,20 +155,6 @@ document.addEventListener('DOMContentLoaded', () => {
       rotate.classList.toggle('rotate');
     });
   }
-  // //* ENTREGABLE AJAX usando un block de notas*/
-  // // test posiblemente cambie por completo este código por ahora es solo para la entrega
-  // function ajax() {
-  //   console.log('funcion activada');
-  //   const xhttp = new XMLHttpRequest();
-  //   xhttp.open('GET', 'bloc.txt', true);
-  //   xhttp.send();
-  //   xhttp.onreadystatechange = function () {
-  //     if (this.readyState === 4 && this.status === 200) {
-  //       document.querySelector('#obtener_ajax').innerHTML = this.responseText;
-  //     }
-  //   };
-  // }
-  // document.querySelector('#ajax_btn').addEventListener('click', ajax);
   // ? separo al usuario por grupo
 
   // const fname = $('#fname').val();
