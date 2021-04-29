@@ -1,0 +1,18 @@
+/**===== animación =====*/
+#bodymo404 {
+    margin-left: 30%;
+    width: 700px;
+    height: 700px;
+}
+
+.Form_titu-ls {
+    color: #D262B3;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 12px;
+    letter-spacing: 3px;
+    text-align: center;
+    text-shadow: #bb11ca 1px 1px;
+    text-transform: uppercase
+}

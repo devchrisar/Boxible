@@ -2,7 +2,6 @@
 import {Pages} from '../controllers/index'
 
 let content = document.getElementById('root')
-const enlaces = document.getElementById('movePage a')
 const router = (route) => {
     content.innerHTML = '';
     switch (route) {
@@ -16,10 +15,11 @@ const router = (route) => {
             return content.appendChild(Pages.entreno())
         }
         case '#/Nutricion':{
-            //return content.appendChild(nutricion.entreno())
+            return content.appendChild(Pages.nutricion())
         }
         default:{
-            return console.log('404')
+            console.log('Estas en la 404')
+            return content.appendChild(Pages.notFound())
         }
     }
 };

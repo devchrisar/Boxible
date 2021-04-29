@@ -197,24 +197,3 @@ a.active span {
     opacity: 1;
     transition: all 0.2s ease-out;
 }
-
-/* on smaller viewports show the navigation bar on the side, attached to the left of the screen */
-.cambiado {
-    flex-direction: column;
-    justify-self: start;
-    border-radius: 0 30px 30px 0;
-    padding: 2rem 1.15rem 2rem 0.75rem;
-    margin-right: -16%;
-    float: right;
-    top: 27%;
-}
-
-/* change the margin separating the anchor link elements now dividing the elements vertically */
-.cambiado a {
-    margin: 0.5rem 0;
-}
-
-/* remove the negative margin from the svg elements, as the width is to be taken in full */
-.cambiado svg {
-    margin: 0;
-}
