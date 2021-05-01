@@ -9,7 +9,7 @@ const router = (route) => {
             return content.appendChild(Pages.home())
         }
         case '#/Salud':{
-            return console.log('salud')
+            return content.appendChild(Pages.salud())
         }
         case '#/Entreno':{
             return content.appendChild(Pages.entreno())
@@ -18,7 +18,6 @@ const router = (route) => {
             return content.appendChild(Pages.nutricion())
         }
         default:{
-            console.log('Estas en la 404')
             return content.appendChild(Pages.notFound())
         }
     }

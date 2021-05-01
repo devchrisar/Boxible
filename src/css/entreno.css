@@ -126,29 +126,6 @@ select {
     color: #FAFCF5;
 }
 
-#return_btn {
-    display: flex;
-    align-items: center;
-    margin: 10px auto;
-    background-color: #20142d;
-    color: #FAFCF5;
-    border-radius: 30px;
-    width: 140px;
-    height: 60px;
-}
-
-
-
-.fa-arrow-alt-to-right {
-    color: #D262B3;
-    font-size: 40px;
-    margin-left: 10px;
-}
-
-.fa-arrow-alt-to-right:hover {
-    color: #8231d0;
-}
-
 #btnCrearPdf {
     cursor: pointer;
     display: flex;

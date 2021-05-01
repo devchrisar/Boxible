@@ -1,0 +1,142 @@
+#SL-bd {
+    background-image: url(../source/health.svg);
+    overflow: hidden;
+}
+
+#loading,
+#results {
+    display: none;
+}
+
+#loading {
+    width: 100%;
+}
+
+.loading {
+    width: 50px;
+    height: 40px;
+    margin: 40px auto;
+}
+
+/**===== CRONOMETRO =====*/
+/* .contenedor_Relog {
+    background-color: #20142D;
+    width: 40%;
+    min-width: 500px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    padding: 60px 0;
+    border-radius: 10px;
+}
+
+.valor_relog {
+    position: relative;
+    width: 110%;
+    background: linear-gradient(-135deg,
+            #8231D0,
+            #8c0da5);
+    left: -5%;
+    padding: 40px 0;
+    font-family: 'Roboto mono', monospace;
+    color: #ffffff;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(253, 0, 253, 0.25);
+}
+
+.btn_Relog {
+    width: 80%;
+    margin: 60px auto 0 auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn_Relog button {
+    padding: 10px 20px;
+    background-color: #D262B3;
+    color: #141313;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+} */
+
+/**===== FIN CRONOMETRO =====*/
+
+/**===== CALCULADOR IMC =====*/
+/* .contenedor_imc {
+
+    margin-left: auto;
+    background-color: #20142D;
+    padding: 40px 30px;
+    width: 50%;
+    min-width: 400px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 25px 25px 30px rgba(0, 0, 0, 0.15);
+}
+
+.selec {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.selec span {
+    font-weight: 500;
+}
+
+.selec input[type="range"] {
+    width: 70%;
+    height: 3.5px;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #D262B3;
+    border-radius: 3px;
+    outline: none;
+}
+
+.selec input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 15px;
+    width: 15px;
+    background-color: #D262B3;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#resultado {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-align: center;
+    color: #0be881;
+}
+
+
+#peso-val,
+#altura-val {
+    color: #fff;
+}
+
+#categoria {
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #8327da;
+} */
+
+/**===== FIN CALCULADOR IMC =====*/

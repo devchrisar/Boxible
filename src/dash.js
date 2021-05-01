@@ -1,9 +1,10 @@
+//!Código HTML DEL BODY PRINCIPAL DONDE SE VAN A ESTAR CARGANDO LOS DIV,MAIN Y SECCIONS DINÁMICOS*/
 import './dash.css'
-  //? cargador (corazon que gira al cargar la pagina) */
-window.onload = function () {
-  $('#Encarga').delay(300).fadeOut();
-  $('#body-pd').removeClass('hidden_BD');
-};
+  //? cargador (corazón que gira al cargar la pagina) */
+  window.onload = function () {
+    $('#Encarga').delay(300).fadeOut();
+    $('#body-pd').removeClass('hidden_BD');
+  };
   //* bloque de codigo para el tab-bar con el cual se desplazara de sección en sección */
 const navigationOptions = [
     {
@@ -54,7 +55,7 @@ const navigationOptions = [
     // apply the class of active to animate the svg an show the span element
     this.classList.add('active');
   }
-  //? enrutador donde se crearan los links de cada sección */
+  //? enrutador donde se crearan los links de cada sección, si no existe lanza 404 */
   import {router} from './router/index.routes'
   router(window.location.hash)
   window.addEventListener('hashchange', () =>{
@@ -76,4 +77,12 @@ const navigationOptions = [
         }
     }
     document.onscroll = scroll;
+
+     //? Aca vuelvo a llamar al local storage porque al estar el original definido en home.controllers.js (funciona bien) pero si el usuario recarga en una pagina diferente a la de home ejemplo nutricion se termina activando el modo oscuro(puede probarlo si eliminá estas lineas de código) si tenia activado el claro y para arreglarlo tocaría regresar al home de nuevo y asi se volvería a activar el modo claro  esto es por que como tal no lo estoy definiendo en el documento de origen o principal que seria dash si no en el home pero lo quería poner alli para cambiarle la clase a activado al switch que cambia el tema y para ocultar y mostrar los logos de cada tema.
+    if(localStorage.getItem('dark-mode') === 'true'){
+      document.body.classList.add('dark');
+    } else {
+      document.body.classList.remove('dark');
+
+    }
 });

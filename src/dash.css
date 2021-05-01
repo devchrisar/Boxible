@@ -1,7 +1,10 @@
+/*!Código CSS DEL BODY PRINCIPAL DONDE SE VAN A ESTAR CARGANDO LOS DIV,MAIN Y SECCIONS DINÁMICOS*/
+
 body {
     background-color: #FAFAFF;
 }
 
+/**===== LOADER de la app (corazón morado que carga) =====*/
 .hidden_BD {
     overflow: hidden;
 }
@@ -11,6 +14,100 @@ body {
     height: 100vh;
 }
 
+/**===== MODO OSCURO (NOVA) =====*/
+body.dark {
+    background-color: #161616;
+}
+
+body.dark p {
+    color: #F0EFF4;
+}
+
+.dark h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #F0EFF4;
+}
+
+/*? sidebar y tab-bar oscuro*/
+body.dark #movePage a {
+    color: #574AE2;
+}
+
+body.dark .nav__linkSide:hover {
+    background-color: #574AE2;
+}
+
+body.dark .active {
+    background-color: #574AE2;
+}
+
+/*? seccion entreno oscuro*/
+body.dark .todo:hover {
+    background-color: rgba(19, 22, 192, 0.432);
+}
+
+body.dark .checkbox-container {
+    color: #F0EFF4;
+}
+
+body.dark .todo button {
+    background-color: #F0EFF4;
+}
+
+body.dark #lists .list {
+    background-color: #574AE2;
+}
+
+body.dark #add-container {
+    background-color: #023e8a;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+body.dark main {
+    background-color: #03045e;
+}
+
+body.dark #add-container form::before {
+    content: '';
+    border: solid #574AE2;
+}
+
+body.dark .fa-cloud-download {
+    color: #574AE2;
+}
+
+body.dark #slist {
+    background-color: #023e8a;
+}
+
+/*? seccion nutricion oscuro*/
+body.dark .resultado_bsqFood {
+    background-color: #000011;
+}
+
+body.dark .resultado_bsqFood .titulo_item {
+    color: #023e8a;
+}
+
+body.dark .view-btn {
+
+    background-color: #574AE2;
+}
+
+body.dark .NUform {
+    border: 4px solid #574AE2;
+}
+
+body.dark .fa-search {
+    color: #574AE2;
+}
+
+/**===== FIN MODO OSCURO (NOVA) =====*/
 
 /**===== Loader=====*/
 .contenedor_Load {
@@ -119,7 +216,7 @@ body {
 }
 
 /* remove default style and slightly separate the anchor links from one another */
-a {
+#movePage a {
     color: #8231D0;
     text-decoration: none;
     margin: 0 0.2rem;
@@ -137,7 +234,7 @@ a {
 }
 
 /* include considerable negative margin to have the svg icon overlapping with the span element */
-a svg {
+#movePage a svg {
     margin-right: -2.5rem;
     width: 28px;
     height: 28px;
@@ -147,7 +244,7 @@ a svg {
 }
 
 /* by default hide the span element */
-a span {
+#movePage a span {
     opacity: 0;
     visibility: hidden;
     font-size: 0.9rem;
@@ -155,7 +252,7 @@ a span {
 }
 
 /* include with a pseudo element relative to the anchor link a circle, with a fixed with and height */
-a:before {
+#movePage a:before {
     position: absolute;
     content: "";
     top: 50%;
@@ -171,13 +268,13 @@ a:before {
 
 /* when active */
 /* specify the colors dictated by the custom properties */
-a.active {
+#movePage a.active {
     background: var(--hover-bg);
     color: var(--hover-c);
 }
 
 /* using the color specified by the then updated custom property show the circle of the pseudo element increasing its size and highlighting it momentarily */
-a.active:before {
+#movePage a.active:before {
     background: var(--hover-c);
     opacity: 0;
     visibility: hidden;
@@ -187,12 +284,12 @@ a.active:before {
 }
 
 /* remove the margin applied to the svg to make it overlay atop the anchor link */
-a.active svg {
+#movePage a.active svg {
     margin-right: 0;
 }
 
 /* show the span element */
-a.active span {
+#movePage a.active span {
     visibility: visible;
     opacity: 1;
     transition: all 0.2s ease-out;

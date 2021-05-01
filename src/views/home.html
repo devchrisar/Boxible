@@ -1,45 +1,58 @@
+<head>
+    <link rel="apple-touch-icon" sizes="180x180" href="../source/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../source/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../source/favicon-16x16.png">
+    <link rel="manifest" href="../source/site.webmanifest">
+</head>
 <!--*HTML DEL SIDEBAR-->
-<div class="l-navbar" id="navbar">
+<div class="l-navbar" id="navbarSide">
     <nav class="barra">
         <div>
-            <div class="nav__brand">
-                <ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon>
-                <a href="/#/" class="nav__logo">Boxible</a>
+            <div class="nav__brandSide">
+                <ion-icon name="menu-outline" class="nav__toggleSide" id="nav-toggle"></ion-icon>
+                <a href="/#/" class="nav__logoSide">Boxible</a>
             </div>
             <div class="nav__list">
-                <div class="nav__link collapse">
-                    <ion-icon name="heart-outline" class="nav__icon"></ion-icon>
-                    <span class="nav__name">Acerca</span>
-                    <ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
-                    <ul class="collapse__menu">
+                <div class="nav__linkSide collapse">
+                    <ion-icon name="heart-outline" class="nav__iconSide"></ion-icon>
+                    <span class="nav__nameSide">Acerca</span>
+                    <ion-icon name="chevron-down-outline" class="collapse__linkSide"></ion-icon>
+                    <ul class="collapse__menuSide">
                         <p id="info_menu"> Boxible es una app hecha por y para deportistas y personas que deseen
                             llevar un control
                             de su entrenamiento.</p>
                     </ul>
                 </div>
 
-                <div class="nav__link collapse">
-                    <ion-icon name="people-outline" class="nav__icon"></ion-icon>
-                    <span class="nav__name">Desarrollador</span>
+                <div class="nav__linkSide collapse">
+                    <ion-icon name="people-outline" class="nav__iconSide"></ion-icon>
+                    <span class="nav__nameSide">Desarrollador</span>
 
-                    <ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
+                    <ion-icon name="chevron-down-outline" class="collapse__linkSide"></ion-icon>
 
-                    <ul class="collapse__menu">
+                    <ul class="collapse__menuSide">
                         <img id="pic_menu" src="../source/usuario.jpeg" alt="pic">
                         <p>Christopher Henry AA.</p>
                     </ul>
                 </div>
-                <div class="nav__link collapse">
-                    <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
-                    <span class="nav__name">opciones</span>
+                <div class="nav__linkSide collapse">
+                    <ion-icon name="settings-outline" class="nav__iconSide"></ion-icon>
+                    <span class="nav__nameSide">opciones</span>
 
-                    <ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
+                    <ion-icon name="chevron-down-outline" class="collapse__linkSide"></ion-icon>
 
-                    <ul class="collapse__menu">
-                        <a href="#" class="collapse__sublink">Tema oscuro</a>
+                    <ul class="collapse__menuSide">
+                        <a href="#/" class="collapse__sublinkSide Activado" id="switchTheme">Tema oscuro</a>
                     </ul>
                 </div>
             </div>
+            <div class="nav__brand">
+                <ion-icon name="cloudy-night-outline" class="nav__toggleSide" id="nav-toggle"></ion-icon>
+            </div>
+            <p id="navTheme_p">Eden</p>
+            <img id="pic_Theme" src="../source/eden">
+            <p id="navTheme_p2" class="nav_hidden">Nova</p>
+            <img id="pic_Theme2" class="nav_hidden" src="../source/nova" alt="pic">
         </div>
     </nav>
 </div>
