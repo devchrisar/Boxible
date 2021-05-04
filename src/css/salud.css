@@ -1,5 +1,5 @@
 #SL-bd {
-    background-image: url(../source/health.svg);
+    /* background-image: url(../source/health.svg); */
     overflow: hidden;
 }
 
@@ -18,21 +18,27 @@
     margin: 40px auto;
 }
 
+#conteinerCal {
+    background-color: #8231d0;
+}
+
+
 /**===== CRONOMETRO =====*/
-/* .contenedor_Relog {
+.contenedor_Relog {
     background-color: #20142D;
     width: 40%;
     min-width: 500px;
-    position: absolute;
+
     transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
+
+    margin-top: 300px;
     padding: 60px 0;
     border-radius: 10px;
+    margin-left: 500px;
 }
 
 .valor_relog {
-    position: relative;
+
     width: 110%;
     background: linear-gradient(-135deg,
             #8231D0,
@@ -66,7 +72,7 @@
     border-radius: 5px;
     cursor: pointer;
     outline: none;
-} */
+}
 
 /**===== FIN CRONOMETRO =====*/
 

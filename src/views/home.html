@@ -3,7 +3,63 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../source/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../source/favicon-16x16.png">
     <link rel="manifest" href="../source/site.webmanifest">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"
+        integrity="sha512-UdIMMlVx0HEynClOIFSyOrPggomfhBKJE28LKl8yR3ghkgugPnG6iLfRfHwushZl1MOPSY6TsuBDGPK2X4zYKg=="
+        crossorigin="anonymous"></script>
+
 </head>
+<!--*registro sesión-->
+<div class="container" id="containerlg">
+    <div class="form-container sign-up-container">
+        <form role="form" class="formulario" id="signup-form" action="">
+            <h1>Crea una cuenta utilizando tus redes sociales!</h1>
+            <div class="social-container">
+                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <span>o usa un email para registrarte</span>
+            <input type="text" name="fname" class="fname" id="signup-name" placeholder="Nombre" required />
+            <input type="email" name="femail" class="femail" id="signup-email" placeholder="Email" required />
+            <input type="password" name="fpassW" class="fpassW" id="signup-password" placeholder="Contraseña"
+                required />
+            <button type="submit" value="Validate!" class="btn_enviarFr">Registrarse</button>
+        </form>
+    </div>
+    <!--*iniciar sesión-->
+    <div class="form-container sign-in-container">
+        <form role="form" class="formulario2" id="login-form" action="">
+            <h1>Inicia Sesión con tus redes preferidas</h1>
+            <div class="social-container">
+                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <span>o usa tu cuenta</span>
+            <input type="email" name="femail2" class="femail2" id="login-email" placeholder="Email" required />
+            <input type="password" name="fpassW2" class="fpassW2" id="login-password" placeholder="Contraseña"
+                required />
+            <a href="#">¿olvido la contraseña?</a>
+            <button type="submit" value="Validate!" class="btn_enviarFr2">Iniciar Sesión</button>
+        </form>
+    </div>
+    <!--*efecto animado login-->
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <h1>Hola de vuelta</h1>
+                <p>Para mantenerte conectado por favor inicia sesión</p>
+                <button class="ghost" id="signIn">Iniciar sesión</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+                <h1>Bienvenido </h1>
+                <p>¿No tienes una cuenta? registrase con su informacion o puedes continuar navegando de forma anónima
+                </p>
+                <button class="ghost" id="signUp">Registrarse</button>
+            </div>
+        </div>
+    </div>
+</div>
 <!--*HTML DEL SIDEBAR-->
 <div class="l-navbar" id="navbarSide">
     <nav class="barra">
@@ -53,6 +109,23 @@
             <img id="pic_Theme" src="../source/eden">
             <p id="navTheme_p2" class="nav_hidden">Nova</p>
             <img id="pic_Theme2" class="nav_hidden" src="../source/nova" alt="pic">
+        </div>
+        <div class="nav__brandSide">
+            <div class="nav__toggleSide">
+                <ion-icon name="log-out" class="nav__iconSide"></ion-icon>
+            </div>
+            <div class="wrapperBtn">
+                <div class="link_wrapperBtn">
+                    <a>Cerrar sesión!</a>
+                    <div class="iconBtn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268.832 268.832">
+                            <path
+                                d="M265.17 125.577l-80-80c-4.88-4.88-12.796-4.88-17.677 0-4.882 4.882-4.882 12.796 0 17.678l58.66 58.66H12.5c-6.903 0-12.5 5.598-12.5 12.5 0 6.903 5.597 12.5 12.5 12.5h213.654l-58.66 58.662c-4.88 4.882-4.88 12.796 0 17.678 2.44 2.44 5.64 3.66 8.84 3.66s6.398-1.22 8.84-3.66l79.997-80c4.883-4.882 4.883-12.796 0-17.678z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </nav>
 </div>

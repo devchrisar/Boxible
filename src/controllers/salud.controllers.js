@@ -6,53 +6,53 @@ export default () =>{
     divElement.innerHTML = views;
     
 //* cronometro solo se puede pausar iniciar y restablecer*/
-  // let [milliseconds, seconds, minutes, hours] = [0, 0, 0, 0];
-  // let timerRef = document.querySelector(".valor_relog");
-  // let int = null;
+  let [milliseconds, seconds, minutes, hours] = [0, 0, 0, 0];
+  let timerRef = divElement.querySelector(".valor_relog");
+  let int = null;
 
-  // document.getElementById("iniciarReg").addEventListener("click", () => {
-  //   if (int !== null) {
-  //     clearInterval(int);
-  //   }
-  //   int = setInterval(displayTimer, 10);
-  // });
+  divElement.querySelector("#iniciarReg").addEventListener("click", () => {
+    if (int !== null) {
+      clearInterval(int);
+    }
+    int = setInterval(displayTimer, 10);
+  });
 
-  // document.getElementById("pausarReg").addEventListener("click", () => {
-  //   clearInterval(int);
-  // });
+  divElement.querySelector("#pausarReg").addEventListener("click", () => {
+    clearInterval(int);
+  });
 
-  // document.getElementById("restaReg").addEventListener("click", () => {
-  //   clearInterval(int);
-  //   [milliseconds, seconds, minutes, hours] = [0, 0, 0, 0];
-  //   timerRef.innerHTML = "00 : 00 : 00 : 000 ";
-  // });
+  divElement.querySelector("#restaReg").addEventListener("click", () => {
+    clearInterval(int);
+    [milliseconds, seconds, minutes, hours] = [0, 0, 0, 0];
+    timerRef.innerHTML = "00 : 00 : 00 : 000 ";
+  });
 
-  // function displayTimer() {
-  //   milliseconds += 10;
-  //   if (milliseconds == 1000) {
-  //     milliseconds = 0;
-  //     seconds++;
-  //     if (seconds == 60) {
-  //       seconds = 0;
-  //       minutes++;
-  //       if (minutes == 60) {
-  //         minutes = 0;
-  //         hours++;
-  //       }
-  //     }
-  //   }
-  //   let h = hours < 10 ? "0" + hours : hours;
-  //   let m = minutes < 10 ? "0" + minutes : minutes;
-  //   let s = seconds < 10 ? "0" + seconds : seconds;
-  //   let ms =
-  //     milliseconds < 10
-  //       ? "00" + milliseconds
-  //       : milliseconds < 100
-  //       ? "0" + milliseconds
-  //       : milliseconds;
+  function displayTimer() {
+    milliseconds += 10;
+    if (milliseconds == 1000) {
+      milliseconds = 0;
+      seconds++;
+      if (seconds == 60) {
+        seconds = 0;
+        minutes++;
+        if (minutes == 60) {
+          minutes = 0;
+          hours++;
+        }
+      }
+    }
+    let h = hours < 10 ? "0" + hours : hours;
+    let m = minutes < 10 ? "0" + minutes : minutes;
+    let s = seconds < 10 ? "0" + seconds : seconds;
+    let ms =
+      milliseconds < 10
+        ? "00" + milliseconds
+        : milliseconds < 100
+        ? "0" + milliseconds
+        : milliseconds;
 
-  //   timerRef.innerHTML = ` ${h} : ${m} : ${s} : ${ms}`;
-  // }
+    timerRef.innerHTML = ` ${h} : ${m} : ${s} : ${ms}`;
+  }
   //* calculadora para determinar por medio de la altura y peso el estado del usuario*/
   // oninput = calcularIMC;
   // function calcularIMC() {

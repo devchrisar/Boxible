@@ -107,6 +107,51 @@ body.dark .fa-search {
     color: #574AE2;
 }
 
+/*? seccion salud*/
+body.dark #conteinerCal {
+    background-color: #023e8a;
+}
+
+/*? seccion Home*/
+body.dark #containerlg button {
+    border: 1px solid #574AE2;
+    background-color: #574AE2;
+}
+
+body.dark .overlay {
+    background: #574AE2;
+    background: -webkit-linear-gradient(to right, #4839e7, #574AE2);
+    background: linear-gradient(to right, #4839e7, #574AE2);
+}
+
+body.dark #containerlg h1 {
+    color: black;
+}
+
+body.dark .iconBtn svg {
+    fill: #574AE2;
+}
+
+body.dark .link_wrapperBtn a:hover {
+    border: 1px solid #574AE2;
+    color: #574AE2;
+}
+
+body.dark .link_wrapperBtn a:hover+.iconBtn {
+    border: 1px solid #574AE2;
+}
+
+/*? error formulario*/
+body.dark label.error {
+    background: #574AE2;
+    border-left: 8px solid #023e8a;
+}
+
+/*? sweet alert*/
+body.dark .swal2-popup {
+    background: #19191a;
+}
+
 /**===== FIN MODO OSCURO (NOVA) =====*/
 
 /**===== Loader=====*/

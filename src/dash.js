@@ -1,5 +1,6 @@
 //!Código HTML DEL BODY PRINCIPAL DONDE SE VAN A ESTAR CARGANDO LOS DIV,MAIN Y SECCIONS DINÁMICOS*/
 import './dash.css'
+import './utils/firebase.config.js'
   //? cargador (corazón que gira al cargar la pagina) */
   window.onload = function () {
     $('#Encarga').delay(300).fadeOut();
