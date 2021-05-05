@@ -151,8 +151,6 @@ if (!firebase.apps.length) {
   // Initialize Firebase
   firebase.initializeApp(config);
 }
-//! 'auth/user-not-found': 'No se a encontrado un usuario registrado a esta cuenta',
-    
 
 
 
@@ -172,8 +170,6 @@ if (!firebase.apps.length) {
           .then(userCredential =>{
             //? limpiar el formulario
             inputs.forEach( input => input.value='')
-            //! eliminar console.log 
-            console.log('sign up')
             Swal.fire({
               position: 'top-end',
               icon: 'success',
@@ -218,9 +214,6 @@ if (!firebase.apps.length) {
           .then(userCredential =>{
             //? limpiar el formulario
             inputs.forEach( input => input.value='')
-            //? ocultar el formulario
-            //! eliminar console.log 
-            console.log('sign In')
           }).catch(error => {
               switch(error.code) {
                 case 'auth/wrong-password':
@@ -258,7 +251,172 @@ if (!firebase.apps.length) {
       console.log('logout')
     })
   })
+  //*firebase mostrar y ocultar formulario
+  auth.onAuthStateChanged(user =>{
+    const form = divElement.querySelector('#containerlg')
+    if (user) {
+      form.classList.add('nav_hidden')
+    }
+    else{
+      form.classList.remove('nav_hidden')
+    }
+  })
+  //*============= INTEGRACIÓN FIREBASE REDES SOCIALES  ==================
+  //*integración con google
+  const googleBtn = divElement.querySelector('#googleLogin')
+  googleBtn.addEventListener('click', e => {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider)
+    .then(result =>{
+      console.log('google ingreso')
+    })
+    .catch(error => {
+      switch(error.code) {
+        case 'auth/account-exists-with-different-credential':
+          Swal.fire({
+            icon: 'error',
+            text: 'El correo de esta cuenta ya se encuentra registrada, Por favor utilize otra cuenta',
+              })
+              break;
+        case 'auth/cancelled-popup-request':
+              Swal.fire({
+                icon: 'error',
+                text: 'A cerrado la ventana emergente de Google o a tratado de iniciar varios registros al mismo tiempo',
+              })
+              break;
+        case 'auth/popup-blocked':
+              Swal.fire({
+                icon: 'error',
+                text: 'La ventana emergente a sido bloqueada por su navegador',
+              })
+              break;
+        case 'auth/popup-closed-by-user':
+              Swal.fire({
+                icon: 'error',
+                text: 'A cerrado la ventana emergente de Google sin rellenar la informacion',
+              })
+              break;
+  }
+    })
+  })
+  //*integración con facebook
+  const facebookBtn = divElement.querySelector('#facebookLogin')
+  facebookBtn.addEventListener('click', e => {
+    e.preventDefault()
+    const provider = new firebase.auth.FacebookAuthProvider();
+    auth.signInWithPopup(provider)
+    .then(result =>{
+      console.log('facebook ingreso')
+    })
+    .catch(error => {
+      switch(error.code) {
+        case 'auth/account-exists-with-different-credential':
+          Swal.fire({
+            icon: 'error',
+            text: 'El correo de esta cuenta ya se encuentra registrada, Por favor utilize otra cuenta',
+              })
+              break;
+        case 'auth/cancelled-popup-request':
+              Swal.fire({
+                icon: 'error',
+                text: 'A cerrado la ventana emergente de Facebook o a tratado de iniciar varios registros al mismo tiempo',
+              })
+              break;
+        case 'auth/popup-blocked':
+              Swal.fire({
+                icon: 'error',
+                text: 'La ventana emergente a sido bloqueada por su navegador',
+              })
+              break;
+        case 'auth/popup-closed-by-user':
+              Swal.fire({
+                icon: 'error',
+                text: 'A cerrado la ventana emergente de Facebook sin rellenar la informacion',
+              })
+              break;
+  }
+    })
+  })
+  //*integración con github
+  const githubBtn = divElement.querySelector('#githubLogin')
+  githubBtn.addEventListener('click', e => {
+    e.preventDefault()
+    const provider = new firebase.auth.GithubAuthProvider();
+    auth.signInWithPopup(provider)
+    .then(result =>{
+      console.log('github ingreso')
+    })
+    .catch(error => {
+      switch(error.code) {
+        case 'auth/account-exists-with-different-credential':
+          Swal.fire({
+            icon: 'error',
+            text: 'El correo de esta cuenta ya se encuentra registrada, Por favor utilize otra cuenta',
+              })
+              break;
+        case 'auth/cancelled-popup-request':
+              Swal.fire({
+                icon: 'error',
+                text: 'A cerrado la ventana emergente de Github o a tratado de iniciar varios registros al mismo tiempo',
+              })
+              break;
+        case 'auth/popup-blocked':
+              Swal.fire({
+                icon: 'error',
+                text: 'La ventana emergente a sido bloqueada por su navegador',
+              })
+              break;
+        case 'auth/popup-closed-by-user':
+              Swal.fire({
+                icon: 'error',
+                text: 'A cerrado la ventana emergente de Github sin rellenar la informacion',
+              })
+              break;
+  }
+    })
+  })
+  //* restablecer contraseña*/
+  const olvidoContra = divElement.querySelector('#forgotPss')
+  const EmailtoSend = divElement.querySelector('#forgotPss').val()
+  olvidoContra.addEventListener('click', e =>{
+      Swal.fire({
+        title: 'Envianos tu cuenta de registro',
+        input: 'text',
+        inputAttributes: {
+          autocapitalize: 'off'
+        },
+        confirmButtonText: 'Enviar',
+        showLoaderOnConfirm: true,
+        allowOutsideClick: () => !Swal.isLoading()
+      })
+      if (EmailtoSend != "") {
+        auth.SendPasswordResetEmail(EmailtoSend).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire({
+                title: 'Se ha enviado con éxito',
+                icon: 'success'
+              })
+            }
+          }).catch(error => {
+            switch(error.code) {
+              case 'auth/account-exists-with-different-credential':
+                case 'auth/invalid-email':
+                      Swal.fire({
+                        icon: 'error',
+                        text: 'El correo no es valido, por favor seleccione otro',
+                      })
+                    break;
+              case 'auth/user-not-found':
+                    Swal.fire({
+                      icon: 'error',
+                      text: 'No se ha encontrado un registro con ese usuario',
+                    })
+                    break;          
+        }
+          })
+        };
 
+      });
     //* codigo del sidebar*/
         const showMenu = (toggleId, navbarId, bodyId) => {
             const toggle = divElement.querySelector(toggleId);
