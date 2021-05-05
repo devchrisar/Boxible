@@ -442,6 +442,7 @@ label.error::before {
     text-align: center;
     text-transform: uppercase;
     transition: all .35s;
+    cursor: pointer;
 }
 
 .iconBtn {
