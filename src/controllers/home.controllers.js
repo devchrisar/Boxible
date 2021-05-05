@@ -377,46 +377,48 @@ if (!firebase.apps.length) {
   })
   //* restablecer contraseña*/
   const olvidoContra = divElement.querySelector('#forgotPss')
-  const EmailtoSend = divElement.querySelector('#forgotPss').val()
   olvidoContra.addEventListener('click', e =>{
-      Swal.fire({
-        title: 'Envianos tu cuenta de registro',
-        input: 'text',
-        inputAttributes: {
-          autocapitalize: 'off'
-        },
-        confirmButtonText: 'Enviar',
-        showLoaderOnConfirm: true,
-        allowOutsideClick: () => !Swal.isLoading()
-      })
-      if (EmailtoSend != "") {
-        auth.SendPasswordResetEmail(EmailtoSend).then((result) => {
-            if (result.isConfirmed) {
+    //*? llamo a la alerta despues del click*/
+    swal.fire({
+      title: 'Ingresa el correo con el que realizaste el registro y te enviaremos un mail de validación',
+      input: 'email',
+      showCancelButton: true,
+      confirmButtonText: 'Enviar',
+      inputPlaceholder: 'Correo Electrónico',
+      focusConfirm: false,
+      inputAutoTrim: 'true',
+      showLoaderOnConfirm: true,
+      inputAttributes: {
+              autocapitalize: 'off'
+          },
+      preConfirm: function (email) {
+        return new Promise(function (resolve, reject) {
+          setTimeout(function() {
+            if (email === '') {
+              reject('Por favor ingrese un correo')
+            } else {
+              resolve()
+            }
+          }, 4000)
+        })
+      },//*? envió la informacion a firebase*/
+      allowOutsideClick: true
+    }).then(function (email) {
+      const prueba = JSON.stringify(email)
+      Swal.fire(`${prueba}`)
+          const correoUser = email.value
+          auth.sendPasswordResetEmail(correoUser).then(function(){
+            if (correoUser) {
               Swal.fire({
                 title: 'Se ha enviado con éxito',
+                text: 'Comprueba tu bandeja de spam o basura si no encuentras el correo enviado',
                 icon: 'success'
               })
             }
-          }).catch(error => {
-            switch(error.code) {
-              case 'auth/account-exists-with-different-credential':
-                case 'auth/invalid-email':
-                      Swal.fire({
-                        icon: 'error',
-                        text: 'El correo no es valido, por favor seleccione otro',
-                      })
-                    break;
-              case 'auth/user-not-found':
-                    Swal.fire({
-                      icon: 'error',
-                      text: 'No se ha encontrado un registro con ese usuario',
-                    })
-                    break;          
-        }
           })
-        };
-
-      });
+        }).catch((err) => Swal.fire({icon: 'error', title: err})) //*?atrapo errores*/
+                              
+            });
     //* codigo del sidebar*/
         const showMenu = (toggleId, navbarId, bodyId) => {
             const toggle = divElement.querySelector(toggleId);
