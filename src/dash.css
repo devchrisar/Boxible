@@ -109,7 +109,43 @@ body.dark .fa-search {
 
 /*? seccion salud*/
 body.dark #conteinerCal {
-    background-color: #023e8a;
+    background-color: #03045e;
+}
+
+body.dark .contenedor_Relog {
+    background-color: #03045e;
+}
+
+body.dark .valor_relog {
+    background: linear-gradient(-135deg,
+            #574AE2,
+            #023e8a);
+    box-shadow: 0 0 20px rgba(4, 0, 253, 0.25);
+}
+
+body.dark .btn_Relog button {
+    background-color: #574AE2;
+}
+
+body.dark .contenedor_imc {
+    background-color: #03045e;
+}
+
+body.dark .selec input[type="range"] {
+    background-color: #574AE2;
+}
+
+body.dark .selec input[type="range"]::-webkit-slider-thumb {
+    background-color: #574AE2;
+}
+
+body.dark #categoria {
+    color: #1ab3e2;
+}
+
+body.dark .btn.btn-block.btn-info {
+    background-color: #574AE2;
+    border-color: #574AE2;
 }
 
 /*? seccion Home*/

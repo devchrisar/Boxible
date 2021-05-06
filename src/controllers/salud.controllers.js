@@ -54,35 +54,36 @@ export default () =>{
     timerRef.innerHTML = ` ${h} : ${m} : ${s} : ${ms}`;
   }
   //* calculadora para determinar por medio de la altura y peso el estado del usuario*/
-  // oninput = calcularIMC;
-  // function calcularIMC() {
-  //   var imc;
-  //   var resultado = document.getElementById("resultado");
+  oninput = calcularIMC;
+  function calcularIMC() {
+     let imc;
+     let resultado = divElement.querySelector("#resultado");
 
-  //   var Peso = parseInt(document.getElementById("peso").value);
-  //   document.getElementById("peso-val").textContent = Peso + " kg";
+  let Peso = parseInt(divElement.querySelector("#peso").value);
+     divElement.querySelector("#peso-val").textContent = Peso + " kg";
 
-  //   var Altura = parseInt(document.getElementById("altura").value);
-  //   document.getElementById("altura-val").textContent = Altura + " cm";
+     let Altura = parseInt(divElement.querySelector("#altura").value);
+     divElement.querySelector("#altura-val").textContent = Altura + " cm";
 
-  //   imc = (Peso / Math.pow(Altura / 100, 2)).toFixed(1);
-  //   resultado.textContent = imc;
+     imc = (Peso / Math.pow(Altura / 100, 2)).toFixed(1);
+     resultado.textContent = imc;
 
-  //   if (imc < 18.5) {
-  //     categoria = "Peso bajo";
-  //     resultado.style.color = "#ffc44d";
-  //   } else if (imc >= 18.5 && imc <= 24.9) {
-  //     categoria = "Saludable";
-  //     resultado.style.color = "#0be881";
-  //   } else if (imc >= 25 && imc <= 29.9) {
-  //     categoria = "Sobrepeso";
-  //     resultado.style.color = "#ff884d";
-  //   } else {
-  //     categoria = "Obesidad";
-  //     resultado.style.color = "#ff5e57";
-  //   }
-  //   document.getElementById("categoria").textContent = categoria;
-  // }
+     let categoria = divElement.querySelector("#categoria")
+  if (imc < 18.5) {
+       categoria = "Peso bajo";
+       resultado.style.color = "#ffc44d";
+     } else if (imc >= 18.5 && imc <= 24.9) {
+       categoria = "Saludable";
+       resultado.style.color = "#0be881";
+     } else if (imc >= 25 && imc <= 29.9) {
+       categoria = "Sobrepeso";
+       resultado.style.color = "#ff884d";
+     } else {
+       categoria = "Obesidad";
+       resultado.style.color = "#ff5e57";
+     }
+     divElement.querySelector("#categoria").textContent = categoria;
+   }
 
     //! Ojo el presente código no es de mi propiedad pero me gusto mucho asi que decidí usarlo para el proyecto
     divElement.querySelector('#calorie-form').addEventListener('submit', function(e){

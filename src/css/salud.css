@@ -1,6 +1,6 @@
 #SL-bd {
-    /* background-image: url(../source/health.svg); */
-    overflow: hidden;
+    overflow-y: hidden;
+    height: 100vh;
 }
 
 #loading,
@@ -17,11 +17,6 @@
     height: 40px;
     margin: 40px auto;
 }
-
-#conteinerCal {
-    background-color: #8231d0;
-}
-
 
 /**===== CRONOMETRO =====*/
 .contenedor_Relog {
@@ -77,14 +72,13 @@
 /**===== FIN CRONOMETRO =====*/
 
 /**===== CALCULADOR IMC =====*/
-/* .contenedor_imc {
+.contenedor_imc {
 
     margin-left: auto;
     background-color: #20142D;
     padding: 40px 30px;
     width: 50%;
     min-width: 400px;
-    position: absolute;
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
@@ -143,6 +137,28 @@
     text-align: center;
     letter-spacing: 1px;
     color: #8327da;
-} */
+}
 
 /**===== FIN CALCULADOR IMC =====*/
+
+/**===== CALCULADOR CALORIAS =====*/
+#conteinerCal {
+    background: #20142D;
+    color: seashell;
+    padding: 40px 30px;
+    width: 69%;
+    height: 700px;
+    min-width: 400px;
+    transform: translate(-50%, -50%);
+    top: -68%;
+    left: 117%;
+    border-radius: 5px;
+    box-shadow: 25px 25px 30px rgba(0, 0, 0, 0.15);
+}
+
+.btn.btn-block.btn-info {
+    background-color: #D262B3;
+    border-color: #D262B3;
+}
+
+/**===== FIN CALCULADOR CALORIAS =====*/
