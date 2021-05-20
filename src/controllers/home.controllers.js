@@ -464,6 +464,7 @@ if (!firebase.apps.length) {
     Nova.classList.toggle('nav_hidden')
     textema2.classList.toggle('nav_hidden')
 
+
      //? Guardamos el modo eden o nova en localstorage.
 	if(document.body.classList.contains('dark')){
 		localStorage.setItem('dark-mode', 'true');

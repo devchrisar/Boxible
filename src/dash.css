@@ -177,6 +177,46 @@ body.dark .link_wrapperBtn a:hover+.iconBtn {
     border: 1px solid #574AE2;
 }
 
+body.dark .hero {
+    background: linear-gradient(120deg, #4839e7 35%, #574AE2 35%);
+}
+
+body.dark .hero .details .top h2 span {
+    color: #3993e7;
+}
+
+body.dark .services .left a {
+    background: #574AE2;
+}
+
+body.dark .testimonials {
+    background: #4839e7;
+}
+
+body.dark .testimonials .right {
+    background: #383d48;
+}
+
+body.dark .testimonials .right .quote cite {
+    color: #574AE2;
+}
+
+body.dark .join .Form-action form input[type="email"] {
+    color: #adb3c0;
+}
+
+body.dark .join .Form-action form input[type="submit"] {
+    background: #574AE2;
+}
+
+body.dark footer {
+    background-color: #161616;
+}
+
+body.dark footer p a {
+    color: #4839e7;
+}
+
 /*? error formulario*/
 body.dark label.error {
     background: #574AE2;
