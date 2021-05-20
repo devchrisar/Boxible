@@ -107,7 +107,7 @@ body.dark .fa-search {
     color: #574AE2;
 }
 
-/*? seccion salud*/
+/*? seccion salud oscuro*/
 body.dark #conteinerCal {
     background-color: #03045e;
 }
@@ -148,7 +148,7 @@ body.dark .btn.btn-block.btn-info {
     border-color: #574AE2;
 }
 
-/*? seccion Home*/
+/*? seccion Home oscuro*/
 body.dark #containerlg button {
     border: 1px solid #574AE2;
     background-color: #574AE2;
@@ -183,7 +183,7 @@ body.dark label.error {
     border-left: 8px solid #023e8a;
 }
 
-/*? sweet alert*/
+/*? sweet alert oscuro*/
 body.dark .swal2-popup {
     background: #19191a;
 }
@@ -288,6 +288,7 @@ body.dark .swal2-popup {
 
 #movePage {
     display: flex;
+    z-index: 100;
     /* considerable whitespace surrounding the navigation's items */
     padding: 2rem 3.15rem;
     border-radius: 0 0 30px 30px;

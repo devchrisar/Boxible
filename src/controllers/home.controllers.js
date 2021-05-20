@@ -3,6 +3,10 @@ import '../css/home.css';
 import '../source/fontawesome.js';
 import '../source/traduccion.js';
 import  '../utils/firebase.config.js';
+import '../source/FitnessStats.svg';
+import '../source/logo_transp.svg';
+import '../source/runner.svg';
+import '../source/pcComents.svg';
 export default () =>{
     const divElement = document.createElement('div');
     divElement.innerHTML = views;
@@ -21,55 +25,38 @@ signInButton.addEventListener('click', () => {
 	container.classList.remove("right-panel-active");
 });
     //* validación login*/
-  //   function dispData() {
-  //     if (localStorage.getItem('formData')) {
-  //       const { fname, fage, femail } = JSON.parse(localStorage.getItem('formData') || '{}');
-  //       // ? no llamo a la contraseña porque no me parece correcto guardarla en el localstorage//
-  //       const output = document.getElementById('output');
-  //       const imgUser = '../boxible/source/logo_Nomark.svg';
-  //       output.innerHTML = `
-  //       <div id="userCard" >
-  //         <div>
-  //           <img class="avatar" src="${imgUser}"  alt="${fname}.png" />
-  //         </div>
-  //         <table id="tablaLG">
-  //           <tbody>
-  //             <tr>
-  //               <td>Bienvenido</td>
-  //               <td>${fname}</td>
-  //             </tr>
-  //             <tr>
-  //               <td>Edad</td>
-  //               <td>${fage} años</td>
-  //               </tr>
-  //               <tr>
-  //               <td>Email</td>
-  //               <td>${femail}</td>
-  //               </tr>
-  //           </tbody>
-  //         </table>
-  //               <div class="ldBar" data-value="0" data-preset="stripe">
-  //               </div>
-  //       <div>
-  // `;
-  //     }
-  //   }
-  //   dispData();
-    // $(document).ready(() => {
-    //   const b1 = document.querySelector('.ldBar');
-    //   const b = new ldBar(b1);
-    //   b.set(0);
-    //   setInterval(() => {
-    //     b.set(Math.round(Math.random() * 100));
-    //   }, 7100);
-    // });
-    // //* valido info del formulario a Firebase //
-    // async function Ingresar(femail, fpassW) {
-    //   const creds = await auth.createUserWithEmailAndPassword(femail, fpassW);
-    //   return db.collection('usuarios').doc(creds.user.uid).set({
-    //     fname: document.getElementById('fname').value,
-    //   });
-    // }
+    function dispData() {
+      if (localStorage.getItem('formData')) {
+        const { fname,femail } = JSON.parse(localStorage.getItem('formData') || '{}');
+        // ? no llamo a la contraseña porque no me parece correcto guardarla en el localstorage//
+        const outputUserEmail = divElement.querySelector('#User-Email');
+        const outputUserName = divElement.querySelector('#User-Name');
+        outputUserName.innerHTML = `<tr><td>Bienvenido</td>
+        <td>${fname}</td></tr>`
+        outputUserEmail.innerHTML = `
+        <div id="userCard" >
+          <table id="tablaLG">
+            <tbody>
+                <tr>
+                <td>${femail}</td>
+                </tr>
+            </tbody>
+          </table>
+                <div class="ldBar" data-value="0" data-preset="stripe">
+                </div>
+        <div>
+  `;
+      }
+    }
+    dispData();
+    $(document).ready(() => {
+      const b1 = document.querySelector('.ldBar');
+      const b = new ldBar(b1);
+      b.set(0);
+      setInterval(() => {
+        b.set(Math.round(Math.random() * 100));
+      }, 7100);
+    });
     // * login y validación de usuario//
     //? registro
     const btn_lG = divElement.querySelector('.btn_enviarFr');
@@ -82,7 +69,7 @@ signInButton.addEventListener('click', () => {
             femail: divElement.querySelector('.femail').value,
           };
           localStorage.setItem('formData', JSON.stringify(formData));
-          // dispData();
+           dispData();
           e.preventDefault();
         };
         FormVal.addEventListener('submit', signUp);
@@ -98,16 +85,18 @@ signInButton.addEventListener('click', () => {
       if ($(FormVal2).valid() === true) {
       const signUp = (e) => {
         const formData = {
+          fname: divElement.querySelector('.fname').value,
           femail: divElement.querySelector('.femail2').value,
         };
+        localStorage.getItem('formData', JSON.stringify(formData));
         localStorage.setItem('formData', JSON.stringify(formData));
-        // dispData();
+          dispData();
         e.preventDefault();
       };
       FormVal2.addEventListener('submit', signUp);
     }
     const femail = $('.femail2').val();
-    const fpassW = $('.fpassW2').val();
+    const fname2 = $('.fname').val();
   });
     //* valido el campo ingresado por el usuario ,usa  la libreria jquery validate //
     var validator = $(FormVal,FormVal2).validate({
@@ -254,11 +243,14 @@ if (!firebase.apps.length) {
   //*firebase mostrar y ocultar formulario
   auth.onAuthStateChanged(user =>{
     const form = divElement.querySelector('#containerlg')
+    const DIVhome = divElement.querySelector('#contenedor-HOME_central')
     if (user) {
       form.classList.add('nav_hidden')
+      DIVhome.classList.remove('nav_hidden')
     }
     else{
       form.classList.remove('nav_hidden')
+      DIVhome.classList.add('nav_hidden')
     }
   })
   //*============= INTEGRACIÓN FIREBASE REDES SOCIALES  ==================

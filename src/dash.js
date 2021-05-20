@@ -56,6 +56,15 @@ const navigationOptions = [
     // apply the class of active to animate the svg an show the span element
     this.classList.add('active');
   }
+  // link active when reload
+    $(function($) {
+      let url = window.location.href;
+      $('#movePage a').each(function() {
+        if (this.href === url) {
+          this.classList.add('active');
+        }
+      });
+    });
   //? enrutador donde se crearan los links de cada sección, si no existe lanza 404 */
   import {router} from './router/index.routes'
   router(window.location.hash)
