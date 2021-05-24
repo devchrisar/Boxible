@@ -15,8 +15,8 @@
             <h1>Crea una cuenta utilizando un correo!</h1>
             <input type="text" name="fname" class="fname" id="signup-name" placeholder="Nombre" required />
             <input type="email" name="femail" class="femail" id="signup-email" placeholder="Email" required />
-            <input type="password" name="fpassW" class="fpassW" id="signup-password" placeholder="Contraseña"
-                required />
+            <input type="password" name="fpassW" class="fpassW" id="signup-password" placeholder="Contraseña" required
+                autocomplete="off" />
             <button type="submit" value="Validate!" class="btn_enviarFr">Registrarse</button>
         </form>
     </div>
@@ -30,9 +30,10 @@
                 <a class="social" id="githubLogin"><i class="fab fa-github"></i></a>
             </div>
             <span>o usa tu cuenta</span>
-            <input type="email" name="femail2" class="femail2" id="login-email" placeholder="Email" required />
-            <input type="password" name="fpassW2" class="fpassW2" id="login-password" placeholder="Contraseña"
-                required />
+            <input type="email" name="femail2" class="femail2" id="login-email" placeholder="Email" required
+                autocomplete="off" />
+            <input type="password" name="fpassW2" class="fpassW2" id="login-password" placeholder="Contraseña" required
+                autocomplete="current-password" />
             <a id="forgotPss">¿olvido la contraseña?</a>
             <button type="submit" value="Validate!" class="btn_enviarFr2">Iniciar Sesión</button>
         </form>
@@ -107,10 +108,10 @@
         </div>
         <div class="nav__brandSide">
             <div class="nav__toggleSide">
-                <ion-icon name="log-out" class="nav__iconSide"></ion-icon>
+                <ion-icon name="log-out" class="nav__iconSide" id="l0gOut_icon"></ion-icon>
             </div>
             <div class="wrapperBtn">
-                <div class="link_wrapperBtn">
+                <div class="link_wrapperBtn" id="l0gOut_div">
                     <a id="logout">Cerrar sesión!</a>
                     <div class="iconBtn">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268.832 268.832">
@@ -129,10 +130,12 @@
     <section class="hero">
         <nav id="ContenidoPagHome_barra">
             <section class="profilebox">
-                <img class="nav_hidden  profpic" id="User_logO" src="../source/Home_avatar" alt="profile picture" />
+                <img class="profpic" id="User_logO" src="../source/Home_avatar" alt="profile picture" />
+                <!--?imagen traída de firebase-->
+                <div id="ImagenDinam"></div>
                 <header>
-                    <h1 class="prof-name" id="User-Name"></h1>
-                    <h4 class="prof-user" id="User-Email"></h4>
+                    <h1 class="prof-name" id="User-Name">Anon User</h1>
+                    <h4 class="prof-user" id="User-Email">email@example.com</h4>
                 </header>
             </section>
         </nav>

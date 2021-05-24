@@ -76,7 +76,6 @@ signInButton.addEventListener('click', () => {
       }
       const fname = $('.fname').val();
       const femail = $('.femail').val();
-      const fpassW = $('.fpassW').val();
     });
     //? iniciar sesión
     const btn_lG2 = divElement.querySelector('.btn_enviarFr2');
@@ -96,7 +95,7 @@ signInButton.addEventListener('click', () => {
       FormVal2.addEventListener('submit', signUp);
     }
     const femail = $('.femail2').val();
-    const fname2 = $('.fname').val();
+    const fname = $('.fname').val();
   });
     //* valido el campo ingresado por el usuario ,usa  la libreria jquery validate //
     var validator = $(FormVal,FormVal2).validate({
@@ -237,20 +236,25 @@ if (!firebase.apps.length) {
     logout.addEventListener('click',(e) =>{
     e.preventDefault();
     auth.signOut().then(() => {
-      console.log('logout')
     })
   })
   //*firebase mostrar y ocultar formulario
   auth.onAuthStateChanged(user =>{
     const form = divElement.querySelector('#containerlg')
     const DIVhome = divElement.querySelector('#contenedor-HOME_central')
+    const DIVlogout = divElement.querySelector('#l0gOut_div')
+    const DIVlogoutIcon = divElement.querySelector('#l0gOut_icon')
     if (user) {
       form.classList.add('nav_hidden')
       DIVhome.classList.remove('nav_hidden')
+      DIVlogout.classList.remove('nav_hidden')
+      DIVlogoutIcon.classList.remove('nav_hidden')
     }
     else{
       form.classList.remove('nav_hidden')
       DIVhome.classList.add('nav_hidden')
+      DIVlogout.classList.add('nav_hidden')
+      DIVlogoutIcon.classList.add('nav_hidden')
     }
   })
   //*============= INTEGRACIÓN FIREBASE REDES SOCIALES  ==================
@@ -259,8 +263,13 @@ if (!firebase.apps.length) {
   googleBtn.addEventListener('click', e => {
     const provider = new firebase.auth.GoogleAuthProvider();
     auth.signInWithPopup(provider)
+    //* Informacion del usuario google facebook github,etc*/
     .then(result =>{
-      console.log('google ingreso')
+      divElement.querySelector('#ImagenDinam').innerHTML += ("<img class='profpic' src='"+result.user.photoURL+"' />");
+      divElement.querySelector('#User-Name').innerHTML =`<td>${result.user.displayName}</td>`;
+      divElement.querySelector('#User-Email').innerHTML =`<tr><td>${result.user.email}</td></tr>`;
+            //? llamo a la funcion para guardar los datos a la base de datos
+            GuardarDatos(result.user);
     })
     .catch(error => {
       switch(error.code) {
@@ -297,8 +306,13 @@ if (!firebase.apps.length) {
     e.preventDefault()
     const provider = new firebase.auth.FacebookAuthProvider();
     auth.signInWithPopup(provider)
+    //* Informacion del usuario google facebook github,etc*/
     .then(result =>{
-      console.log('facebook ingreso')
+      divElement.querySelector('#ImagenDinam').innerHTML += ("<img class='profpic' src='"+result.user.photoURL+"' />");
+      divElement.querySelector('#User-Name').innerHTML =`<td>${result.user.displayName}</td>`;
+      divElement.querySelector('#User-Email').innerHTML =`<tr><td>${result.user.email}</td></tr>`;
+            //? llamo a la funcion para guardar los datos a la base de datos
+            GuardarDatos(result.user);
     })
     .catch(error => {
       switch(error.code) {
@@ -335,8 +349,13 @@ if (!firebase.apps.length) {
     e.preventDefault()
     const provider = new firebase.auth.GithubAuthProvider();
     auth.signInWithPopup(provider)
+    //* Informacion del usuario google facebook github,etc*/
     .then(result =>{
-      console.log('github ingreso')
+      divElement.querySelector('#ImagenDinam').innerHTML += ("<img class='profpic' src='"+result.user.photoURL+"' />");
+      divElement.querySelector('#User-Name').innerHTML =`<td>${result.user.displayName}</td>`;
+      divElement.querySelector('#User-Email').innerHTML =`<tr><td>${result.user.email}</td></tr>`;
+      //? llamo a la funcion para guardar los datos a la base de datos
+      GuardarDatos(result.user);
     })
     .catch(error => {
       switch(error.code) {
@@ -408,9 +427,23 @@ if (!firebase.apps.length) {
               })
             }
           })
-        }).catch((err) => Swal.fire({icon: 'error', title: err})) //*?atrapo errores*/
-                              
+        }).catch((err) => Swal.fire({icon: 'error', title: err})) //*?atrapo errores*/       
             });
+        //* guardo la informacion del usuario en la base de datos
+        function GuardarDatos(user){
+          return db
+          .collection("usuarios")
+          .doc(user.uid)
+          .set({
+            uid: user.uid,
+            nombre: user.displayName,
+            email: user.email,
+            foto: user.photoURL
+          })
+        .catch((error) => {
+            console.error("Error adding document: ", error);
+        });
+        }
     //* codigo del sidebar*/
         const showMenu = (toggleId, navbarId, bodyId) => {
             const toggle = divElement.querySelector(toggleId);
@@ -427,7 +460,7 @@ if (!firebase.apps.length) {
           };
           showMenu('#nav-toggle', '#navbarSide', '#body-pd');
         
-          /*= ==== LINK ACTIVE  ===== */
+          //?= ==== LINK ACTIVE  ===== */
           const linkColor = divElement.querySelectorAll('.nav__linkSide');
           function colorLink() {
             linkColor.forEach((l) => l.classList.remove('active'));
@@ -435,7 +468,7 @@ if (!firebase.apps.length) {
           }
           linkColor.forEach((l) => l.addEventListener('click', colorLink));
         
-          /*= ==== COLLAPSE MENU  ===== */
+          //?= ==== COLLAPSE MENU  ===== */
           const linkCollapse = divElement.getElementsByClassName('collapse__linkSide');
           let i;
         
