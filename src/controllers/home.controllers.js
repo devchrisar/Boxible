@@ -36,17 +36,19 @@ signInButton.addEventListener('click', () => {
         outputUserEmail.innerHTML = `
         <div id="userCard" >
           <table id="tablaLG">
-            <tbody>
-                <tr>
-                <td>${femail}</td>
-                </tr>
-            </tbody>
+          <tbody>
+          <tr>
+          <td>${femail}</td>
+          </tr>
+          </tbody>
           </table>
-                <div class="ldBar" data-value="0" data-preset="stripe">
-                </div>
-        <div>
-  `;
-      }
+          <div>
+          `;
+        }
+        const outputLDBar = divElement.querySelector('#LdbArbox');
+      outputLDBar.innerHTML = `
+      <div class="ldBar" data-value="0" data-preset="stripe">
+      </div>`
     }
     dispData();
     $(document).ready(() => {
@@ -196,50 +198,50 @@ if (!firebase.apps.length) {
       const Email = divElement.querySelector('#login-email').value;
       const Password = divElement.querySelector('#login-password').value;
       const inputs = divElement.querySelectorAll('input')
-
+      
       auth 
-          .signInWithEmailAndPassword(Email,Password)
-          .then(userCredential =>{
-            //? limpiar el formulario
-            inputs.forEach( input => input.value='')
-          }).catch(error => {
-              switch(error.code) {
-                case 'auth/wrong-password':
+      .signInWithEmailAndPassword(Email,Password)
+      .then(userCredential =>{
+        //? limpiar el formulario
+        inputs.forEach( input => input.value='')
+        }).catch(error => {
+          switch(error.code) {
+            case 'auth/wrong-password':
                   Swal.fire({
                     icon: 'error',
                     text: 'La contraseña no concuerda con el correo utilizado',
-                      })
+                  })
                       break;
-                case 'auth/user-not-found':
+                      case 'auth/user-not-found':
                       Swal.fire({
                         icon: 'error',
                         text: 'No se ha encontrado un registro con ese usuario',
                       })
                       break;
                 case 'auth/invalid-email':
-                      Swal.fire({
-                        icon: 'error',
-                        text: 'El correo no es valido, por favor seleccione otro',
+                  Swal.fire({
+                    icon: 'error',
+                    text: 'El correo no es valido, por favor seleccione otro',
                       })
                       break;
-                case 'auth/user-disabled':
-                      Swal.fire({
+                      case 'auth/user-disabled':
+                        Swal.fire({
                         icon: 'error',
                         text: 'Este usuario se encuentra deshabilitado',
                       })
                       break;
-          }
-            })
-    });
-    //*firebase logout
-    const logout = divElement.querySelector('#logout');
-    logout.addEventListener('click',(e) =>{
-    e.preventDefault();
-    auth.signOut().then(() => {
-    })
-  })
-  //*firebase mostrar y ocultar formulario
-  auth.onAuthStateChanged(user =>{
+                    }
+                  })
+                });
+                //*firebase logout
+                const logout = divElement.querySelector('#logout');
+                logout.addEventListener('click',(e) =>{
+                  e.preventDefault();
+                  auth.signOut().then(() => {
+                  })
+                })
+                //*firebase mostrar y ocultar elementos
+                auth.onAuthStateChanged(user =>{
     const form = divElement.querySelector('#containerlg')
     const DIVhome = divElement.querySelector('#contenedor-HOME_central')
     const DIVlogout = divElement.querySelector('#l0gOut_div')
@@ -249,6 +251,9 @@ if (!firebase.apps.length) {
       DIVhome.classList.remove('nav_hidden')
       DIVlogout.classList.remove('nav_hidden')
       DIVlogoutIcon.classList.remove('nav_hidden')
+      divElement.querySelector('#ImagenDinam').innerHTML += "<img onerror=this.style.display='none' class='profpic' src='"+`${user.photoURL ??"" }` +"' />";
+      divElement.querySelector('#User-Name').innerHTML =`<td>${user.displayName ??"Usuario"}</td>`;
+      divElement.querySelector('#User-Email').innerHTML =`<tr><td>${user.email ??""}</td></tr>`;      
     }
     else{
       form.classList.remove('nav_hidden')
@@ -265,9 +270,6 @@ if (!firebase.apps.length) {
     auth.signInWithPopup(provider)
     //* Informacion del usuario google facebook github,etc*/
     .then(result =>{
-      divElement.querySelector('#ImagenDinam').innerHTML += ("<img class='profpic' src='"+result.user.photoURL+"' />");
-      divElement.querySelector('#User-Name').innerHTML =`<td>${result.user.displayName}</td>`;
-      divElement.querySelector('#User-Email').innerHTML =`<tr><td>${result.user.email}</td></tr>`;
             //? llamo a la funcion para guardar los datos a la base de datos
             GuardarDatos(result.user);
     })
@@ -308,9 +310,6 @@ if (!firebase.apps.length) {
     auth.signInWithPopup(provider)
     //* Informacion del usuario google facebook github,etc*/
     .then(result =>{
-      divElement.querySelector('#ImagenDinam').innerHTML += ("<img class='profpic' src='"+result.user.photoURL+"' />");
-      divElement.querySelector('#User-Name').innerHTML =`<td>${result.user.displayName}</td>`;
-      divElement.querySelector('#User-Email').innerHTML =`<tr><td>${result.user.email}</td></tr>`;
             //? llamo a la funcion para guardar los datos a la base de datos
             GuardarDatos(result.user);
     })
@@ -351,9 +350,6 @@ if (!firebase.apps.length) {
     auth.signInWithPopup(provider)
     //* Informacion del usuario google facebook github,etc*/
     .then(result =>{
-      divElement.querySelector('#ImagenDinam').innerHTML += ("<img class='profpic' src='"+result.user.photoURL+"' />");
-      divElement.querySelector('#User-Name').innerHTML =`<td>${result.user.displayName}</td>`;
-      divElement.querySelector('#User-Email').innerHTML =`<tr><td>${result.user.email}</td></tr>`;
       //? llamo a la funcion para guardar los datos a la base de datos
       GuardarDatos(result.user);
     })
@@ -440,10 +436,7 @@ if (!firebase.apps.length) {
             email: user.email,
             foto: user.photoURL
           })
-        .catch((error) => {
-            console.error("Error adding document: ", error);
-        });
-        }
+        };
     //* codigo del sidebar*/
         const showMenu = (toggleId, navbarId, bodyId) => {
             const toggle = divElement.querySelector(toggleId);
