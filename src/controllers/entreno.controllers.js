@@ -211,7 +211,7 @@ export default () =>{
               showConfirmButton: false,
               timer: 3000,
               timerProgressBar: true,
-              didOpen: (toast) => {
+              onOpen: (toast) => {
                 toast.addEventListener('mouseenter', Swal.stopTimer);
                 toast.addEventListener('mouseleave', Swal.resumeTimer);
               },

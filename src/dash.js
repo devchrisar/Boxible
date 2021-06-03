@@ -1,11 +1,35 @@
-//!Código HTML DEL BODY PRINCIPAL DONDE SE VAN A ESTAR CARGANDO LOS DIV,MAIN Y SECCIONS DINÁMICOS*/
-import './dash.css'
-import './utils/firebase.config.js'
+import './dash.css';
+import './source/phoneFlyer.svg';
+import './source/logo_transp.svg';
   //? cargador (corazón que gira al cargar la pagina) */
   window.onload = function () {
     $('#Encarga').delay(300).fadeOut();
     $('#body-pd').removeClass('hidden_BD');
   };
+  //? mensaje de error para usuarios móviles
+  if (screen.width < 1100) { 
+    Swal.fire({
+      title: 'Lo sentimos',
+      text: "Como equipo de Boxible estamos trabajando para darte las mejores características de la aplicación,lamentablemente aún no contamos con una app para dispositivos móviles, pero no descartamos crear una😉.",
+      icon: 'info',
+      iconHtml: '<img src="./src/source/logo_transp.svg" width="190" height="210">',
+      allowOutsideClick: () => {
+        const popup = Swal.getPopup()
+        popup.classList.remove('swal2-show')
+        setTimeout(() => {
+          popup.classList.add('animate__animated', 'animate__headShake')
+        })
+        setTimeout(() => {
+          popup.classList.remove('animate__animated', 'animate__headShake')
+        }, 500)
+      },
+      showCancelButton: false,
+      showConfirmButton: false,
+      imageUrl: './src/source/phoneFlyer.svg',
+      imageAlt: 'imagen de referencia app movil',
+      footer: '<a class="movilError_boton">!Por favor visita la app desde una laptop,ordenador o computador de escritorio¡</a>'
+    })
+ } 
   //* bloque de codigo para el tab-bar con el cual se desplazara de sección en sección */
 const navigationOptions = [
     {

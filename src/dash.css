@@ -14,6 +14,15 @@ body {
     height: 100vh;
 }
 
+/*? modo blur  para las alertas*/
+body.swal2-shown>[aria-hidden="true"] {
+    filter: blur(10px);
+}
+
+body>* {
+    transition: 0.1s filter linear;
+}
+
 /**===== MODO OSCURO (NOVA) =====*/
 body.dark {
     background-color: #161616;
@@ -415,4 +424,41 @@ body.dark .swal2-popup {
     visibility: visible;
     opacity: 1;
     transition: all 0.2s ease-out;
+}
+
+/*?mensaje error movil*/
+.movilError_boton {
+    display: inline-block;
+    margin-top: 15px;
+    text-decoration: none;
+    background: #7b2cbf;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 15px;
+    animation: spring 2s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+}
+
+@keyframes spring {
+    0% {
+        transform: scale(1) translateY(0);
+    }
+
+    10% {
+        transform: scale(1.2, 0.6);
+    }
+
+    30% {
+        transform: scale(0.8, 1.1) translateY(-50px);
+    }
+
+    50% {
+        transform: scale(1) translateY(0);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
 }
