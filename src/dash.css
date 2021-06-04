@@ -210,12 +210,25 @@ body.dark .testimonials .right .quote cite {
     color: #574AE2;
 }
 
-body.dark .join .Form-action form input[type="email"] {
-    color: #adb3c0;
+body.dark .containerSlack a {
+    background: #574AE2;
 }
 
-body.dark .join .Form-action form input[type="submit"] {
-    background: #574AE2;
+body.dark .containerSlack a:hover {
+    background: #3b2ddb;
+}
+
+body.dark .fa-slack {
+    color: #F0EFF4;
+}
+
+body.dark .containerSlack a span {
+    background: #383d48;
+    color: #fff;
+}
+
+body.dark .containerSlack a span:before {
+    border-top: 5px solid #383d48;
 }
 
 body.dark footer {
