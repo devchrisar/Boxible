@@ -280,54 +280,25 @@ if (!firebase.apps.length) {
                           MensajeCHAT.value = ''
                         })
                         .catch((error) => {
+                                  let timerInterval
                                   Swal.fire({
-                                    icon: 'error',
-                                    html:
-                                    'I will close in <strong></strong> seconds.<br/><br/>',
+                                    title: 'Oops a ocurrido algo!!',
+                                    icon: 'warning',
+                                    html: '<h1>posibles errores:</h1>' +
+                                    '<p><span class="swal-Blue">1.</span>La operación que esta tratando de realizar no le es permitido y solo puede ser ejecutado por un <span class="swal-Blue">ADMIN.</span></p>'+
+                                    '<p><span class="swal-Red">2.</span> A intentado  realizar un comentario en un corto lapso de tiempo, si es asi por favor <span class="swal-Red">espere el tiempo indicado.</span></p>'+
+                                    'Debes esperar <strong class="swal-Red swal-NmbCount"></strong> segundos para volver a comentar, esto para evitar spam.<br/><br/>',
                                   timer: 40000,
-                                  didOpen: (toast) => {
-                                    const content = Swal.getHtmlContainer()
-                                    const $ = content.querySelector.bind(content)
-                                    const stop = $('#stop')
-                                    const resume = $('#resume')
-                                    const toggle = $('#toggle')
-                                    const increase = $('#increase')
-                                    Swal.showLoading()
-                                
-                                    function toggleButtons () {
-                                      stop.disabled = !Swal.isTimerRunning()
-                                      resume.disabled = Swal.isTimerRunning()
-                                    }
-                                
-                                    stop.addEventListener('click', () => {
-                                      Swal.stopTimer()
-                                      toggleButtons()
-                                    })
-                                
-                                    resume.addEventListener('click', () => {
-                                      Swal.resumeTimer()
-                                      toggleButtons()
-                                    })
-                                
-                                    toggle.addEventListener('click', () => {
-                                      Swal.toggleTimer()
-                                      toggleButtons()
-                                    })
-                                
-                                    increase.addEventListener('click', () => {
-                                      Swal.increaseTimer(5000)
-                                    })
-                                
+                                  onOpen: () => {
                                     timerInterval = setInterval(() => {
-                                      Swal.getHtmlContainer().querySelector('strong')
-                                        .textContent = (Swal.getTimerLeft() / 1000)
-                                          .toFixed(0)
+                                      swal.getContent().querySelector('strong')
+                                        .textContent = Math.ceil(swal.getTimerLeft() / 1000)
                                     }, 100)
                                   },
-                                  willClose: () => {
+                                  onClose: () => {
                                     clearInterval(timerInterval)
                                   }
-                                  })
+                                })
                         });
                       });
                       //* rrecorro la informacion de los mensajes en la base de datos
