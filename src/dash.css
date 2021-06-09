@@ -190,6 +190,7 @@ body.dark .hero {
     background: linear-gradient(120deg, #4839e7 35%, #574AE2 35%);
 }
 
+/*?informacion home*/
 body.dark .hero .details .top h2 span {
     color: #3993e7;
 }
@@ -198,6 +199,7 @@ body.dark .services .left a {
     background: #574AE2;
 }
 
+/*?comentarios favoritos home*/
 body.dark .testimonials {
     background: #4839e7;
 }
@@ -210,6 +212,7 @@ body.dark .testimonials .right .quote cite {
     color: #574AE2;
 }
 
+/*?Slack home*/
 body.dark .containerSlack a {
     background: #574AE2;
 }
@@ -231,6 +234,34 @@ body.dark .containerSlack a span:before {
     border-top: 5px solid #383d48;
 }
 
+/*? Seccion comentarios home*/
+body.dark #mensaje {
+    border-radius: 50px;
+    background: linear-gradient(45deg, #5d4ff2, #4e43cb);
+    box-shadow: 20px -20px 60px #4a3fc0,
+        -20px 20px 60px #6455ff;
+}
+
+body.dark .comment-box .comment-content {
+    background: #383d48;
+    color: #fff;
+}
+
+body.dark .comment-box .comment-head {
+    background: #383d48;
+    padding: 10px 12px;
+    border-bottom: 1px solid #282c33;
+}
+
+body.dark .fa-leaf-heart {
+    color: #ff0a54;
+}
+
+body.dark .fa-leaf-heart:hover {
+    color: #990033;
+}
+
+/*?footer home*/
 body.dark footer {
     background-color: #161616;
 }

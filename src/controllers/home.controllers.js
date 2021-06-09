@@ -71,7 +71,7 @@ signInButton.addEventListener('click', () => {
             femail: divElement.querySelector('.femail').value,
           };
           localStorage.setItem('formData', JSON.stringify(formData));
-           dispData();
+        dispData();
           e.preventDefault();
         };
         FormVal.addEventListener('submit', signUp);
@@ -153,7 +153,6 @@ if (!firebase.apps.length) {
       const Email = divElement.querySelector('#signup-email').value;
       const Password = divElement.querySelector('#signup-password').value;
       const inputs = divElement.querySelectorAll('input')
-
       
       auth 
           .createUserWithEmailAndPassword(Email,Password)
@@ -199,7 +198,7 @@ if (!firebase.apps.length) {
       const Password = divElement.querySelector('#login-password').value;
       const inputs = divElement.querySelectorAll('input')
       
-      auth 
+    auth 
       .signInWithEmailAndPassword(Email,Password)
       .then(userCredential =>{
         //? limpiar el formulario
@@ -239,7 +238,7 @@ if (!firebase.apps.length) {
                   e.preventDefault();
                   auth.signOut().then(() => {
                   })
-                })
+                });
                 //*firebase mostrar y ocultar elementos
                 auth.onAuthStateChanged(user =>{
     const form = divElement.querySelector('#containerlg')
@@ -254,6 +253,116 @@ if (!firebase.apps.length) {
       divElement.querySelector('#ImagenDinam').innerHTML += "<img onerror=this.style.display='none' class='profpic' src='"+`${user.photoURL ??"" }` +"' />";
       divElement.querySelector('#User-Name').innerHTML =`<td>${user.displayName ??"Usuario"}</td>`;
       divElement.querySelector('#User-Email').innerHTML =`<tr><td>${user.email ??""}</td></tr>`;      
+
+                        //*============= CHAT  ==================
+                        const CHAT = divElement.querySelector('#Chat_home');
+                        const MensajeCHAT = divElement.querySelector('#mensaje');
+                        const {uid,displayName,photoURL,email} = user;
+                        CHAT.addEventListener('submit',(e)=>{
+                          e.preventDefault()
+                          if (!MensajeCHAT.value.trim()) {
+                            Swal.fire({
+                              icon: 'error',
+                              text: 'Por favor introduce algún mensaje',
+                                })
+                            return
+                          }
+                          db
+                          .collection("Mensajes").add({
+                            texto: MensajeCHAT.value,
+                            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                            uid,
+                            displayName,
+                            photoURL,
+                            email
+                        })
+                        .then((docRef) => {
+                          MensajeCHAT.value = ''
+                        })
+                        .catch((error) => {
+                                  Swal.fire({
+                                    icon: 'error',
+                                    html:
+                                    'I will close in <strong></strong> seconds.<br/><br/>',
+                                  timer: 40000,
+                                  didOpen: (toast) => {
+                                    const content = Swal.getHtmlContainer()
+                                    const $ = content.querySelector.bind(content)
+                                    const stop = $('#stop')
+                                    const resume = $('#resume')
+                                    const toggle = $('#toggle')
+                                    const increase = $('#increase')
+                                    Swal.showLoading()
+                                
+                                    function toggleButtons () {
+                                      stop.disabled = !Swal.isTimerRunning()
+                                      resume.disabled = Swal.isTimerRunning()
+                                    }
+                                
+                                    stop.addEventListener('click', () => {
+                                      Swal.stopTimer()
+                                      toggleButtons()
+                                    })
+                                
+                                    resume.addEventListener('click', () => {
+                                      Swal.resumeTimer()
+                                      toggleButtons()
+                                    })
+                                
+                                    toggle.addEventListener('click', () => {
+                                      Swal.toggleTimer()
+                                      toggleButtons()
+                                    })
+                                
+                                    increase.addEventListener('click', () => {
+                                      Swal.increaseTimer(5000)
+                                    })
+                                
+                                    timerInterval = setInterval(() => {
+                                      Swal.getHtmlContainer().querySelector('strong')
+                                        .textContent = (Swal.getTimerLeft() / 1000)
+                                          .toFixed(0)
+                                    }, 100)
+                                  },
+                                  willClose: () => {
+                                    clearInterval(timerInterval)
+                                  }
+                                  })
+                        });
+                      });
+                      //* rrecorro la informacion de los mensajes en la base de datos
+                      db
+                          .collection('Mensajes')
+                          .orderBy('timestamp')
+                          .onSnapshot(query =>{
+                            divMensajeDinamico.innerHTML = '';
+                            query.forEach(doc =>{
+                              divMensajeDinamico.innerHTML += `
+                              <div class="comments-container">
+                              <ul id="comments-list" class="comments-list">
+        
+                                  <div class="comment-main-level">
+                                    <div class="comment-avatar">
+                                      <img onerror=this.style.display='none'
+                                        src="${doc.data().photoURL ??"https://ui-avatars.com/api/?background=random&name=usuario" }" />
+                                    </div>
+                            
+                                    <div class="comment-box">
+                                      <div class="comment-head">
+                                        <h6 class="comment-name"><p>${doc.data().displayName ??"Usuario"}</p></h6>
+                                        <span>${moment(doc.data().timestamp && doc.data().timestamp.toDate()).calendar()}</span>
+                                      </div>
+                            
+                                      <div class="comment-content">${doc.data().texto}</div>
+                                    </div>
+                                  </div>
+        
+                                </ul> 
+                                </div>                
+                              `
+                              divMensajeDinamico.scrollTop = divMensajeDinamico.scrollHeight
+                            })
+                          });
     }
     else{
       form.classList.remove('nav_hidden')
@@ -261,7 +370,7 @@ if (!firebase.apps.length) {
       DIVlogout.classList.add('nav_hidden')
       DIVlogoutIcon.classList.add('nav_hidden')
     }
-  })
+  });
   //*============= INTEGRACIÓN FIREBASE REDES SOCIALES  ==================
   //*integración con google
   const googleBtn = divElement.querySelector('#googleLogin')
@@ -301,7 +410,7 @@ if (!firebase.apps.length) {
               break;
   }
     })
-  })
+  });
   //*integración con facebook
   const facebookBtn = divElement.querySelector('#facebookLogin')
   facebookBtn.addEventListener('click', e => {
@@ -341,7 +450,7 @@ if (!firebase.apps.length) {
               break;
   }
     })
-  })
+  });
   //*integración con github
   const githubBtn = divElement.querySelector('#githubLogin')
   githubBtn.addEventListener('click', e => {
@@ -381,7 +490,7 @@ if (!firebase.apps.length) {
               break;
   }
     })
-  })
+  });
   //* restablecer contraseña*/
   const olvidoContra = divElement.querySelector('#forgotPss')
   olvidoContra.addEventListener('click', e =>{
@@ -425,18 +534,20 @@ if (!firebase.apps.length) {
           })
         }).catch((err) => Swal.fire({icon: 'error', title: err})) //*?atrapo errores*/       
             });
-        //* guardo la informacion del usuario en la base de datos
-        function GuardarDatos(user){
-          return db
-          .collection("usuarios")
-          .doc(user.uid)
-          .set({
-            uid: user.uid,
-            nombre: user.displayName,
-            email: user.email,
-            foto: user.photoURL
-          })
-        };
+            
+              //* guardo la informacion del usuario en la base de datos
+              function GuardarDatos(user){
+                db
+                  .collection("usuarios")
+                  .doc(user.uid)
+                  .set({
+                    userID: user.uid,
+                    nombre: user.displayName,
+                    email: user.email,
+                    foto: user.photoURL
+                  })
+                };
+
     //* codigo del sidebar*/
         const showMenu = (toggleId, navbarId, bodyId) => {
             const toggle = divElement.querySelector(toggleId);
