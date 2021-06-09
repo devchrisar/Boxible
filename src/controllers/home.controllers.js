@@ -134,7 +134,7 @@ const firebaseConfig = {
 // firebase.analytics();
 const auth = firebase.auth();
 const db = firebase.firestore();
-const func = firebase.functions();
+
 
 //? tuve un problema al utilizar firebase al parecer por lo que entendi como estoy creando cada vez contenido dinamico el cual se va imprimiendo una y otra vez como un bucle esto crea que firebase se vaya instanciando varias veces lo cual no le es posible y arroja el siguiente error por consola (Firebase App named ‘[DEFAULT]’ already exists (app/duplicate-app) investigando encontre el siguiente codigo que lo soluciona a travez de la propiedad length)
 if (!firebase.apps.length) {
@@ -166,6 +166,7 @@ if (!firebase.apps.length) {
               showConfirmButton: false,
               timer: 1500
             });
+            window.location.reload();
             //? errores de firebase
           }).catch(error => {
           switch(error.code) {
@@ -203,6 +204,7 @@ if (!firebase.apps.length) {
       .then(userCredential =>{
         //? limpiar el formulario
         inputs.forEach( input => input.value='')
+        window.location.reload();
         }).catch(error => {
           switch(error.code) {
             case 'auth/wrong-password':
@@ -237,6 +239,7 @@ if (!firebase.apps.length) {
                 logout.addEventListener('click',(e) =>{
                   e.preventDefault();
                   auth.signOut().then(() => {
+                    window.location.reload();
                   })
                 });
                 //*firebase mostrar y ocultar elementos
@@ -246,10 +249,10 @@ if (!firebase.apps.length) {
     const DIVlogout = divElement.querySelector('#l0gOut_div')
     const DIVlogoutIcon = divElement.querySelector('#l0gOut_icon')
     if (user) {
-      form.classList.add('nav_hidden')
-      DIVhome.classList.remove('nav_hidden')
-      DIVlogout.classList.remove('nav_hidden')
-      DIVlogoutIcon.classList.remove('nav_hidden')
+      form.classList.add('nav_hidden');
+      DIVhome.classList.remove('nav_hidden');
+      DIVlogout.classList.remove('nav_hidden');
+      DIVlogoutIcon.classList.remove('nav_hidden');
       divElement.querySelector('#ImagenDinam').innerHTML += "<img onerror=this.style.display='none' class='profpic' src='"+`${user.photoURL ??"" }` +"' />";
       divElement.querySelector('#User-Name').innerHTML =`<td>${user.displayName ??"Usuario"}</td>`;
       divElement.querySelector('#User-Email').innerHTML =`<tr><td>${user.email ??""}</td></tr>`;      
@@ -268,7 +271,9 @@ if (!firebase.apps.length) {
                             return
                           }
                           db
-                          .collection("Mensajes").add({
+                          .collection("Mensajes")
+                          .doc(user.uid)
+                          .set({
                             texto: MensajeCHAT.value,
                             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
                             uid,
@@ -336,10 +341,10 @@ if (!firebase.apps.length) {
                           });
     }
     else{
-      form.classList.remove('nav_hidden')
-      DIVhome.classList.add('nav_hidden')
-      DIVlogout.classList.add('nav_hidden')
-      DIVlogoutIcon.classList.add('nav_hidden')
+      form.classList.remove('nav_hidden');
+      DIVhome.classList.add('nav_hidden');
+      DIVlogout.classList.add('nav_hidden');
+      DIVlogoutIcon.classList.add('nav_hidden');
     }
   });
   //*============= INTEGRACIÓN FIREBASE REDES SOCIALES  ==================
@@ -352,6 +357,7 @@ if (!firebase.apps.length) {
     .then(result =>{
             //? llamo a la funcion para guardar los datos a la base de datos
             GuardarDatos(result.user);
+            window.location.reload();
     })
     .catch(error => {
       switch(error.code) {
@@ -392,6 +398,7 @@ if (!firebase.apps.length) {
     .then(result =>{
             //? llamo a la funcion para guardar los datos a la base de datos
             GuardarDatos(result.user);
+            window.location.reload();
     })
     .catch(error => {
       switch(error.code) {
@@ -432,6 +439,7 @@ if (!firebase.apps.length) {
     .then(result =>{
       //? llamo a la funcion para guardar los datos a la base de datos
       GuardarDatos(result.user);
+      window.location.reload();
     })
     .catch(error => {
       switch(error.code) {
