@@ -11,8 +11,10 @@ export default () =>{
     const searchForm = divElement.querySelector(".NUform");
     const searchResultDiv = divElement.querySelector(".resultado_bsqFood");
     const container = divElement.querySelector(".NUcontenedor");
-    const APP_ID = 'bf8d255a';
-    const APP_KEY = process.env.API_KEY;
+      //*?Please provide your API ID from Edaman*/
+      const APP_ID = 'bf8d255a';
+      //*?Please provide your API KEY from Edaman*/
+      const APP_KEY = process.env.API_KEY;
 let searchQuery = "";
 
 function generateHTML(results) {
@@ -33,6 +35,9 @@ function generateHTML(results) {
     });
     searchResultDiv.innerHTML = generatedHTML;
   }
+  //*!UPDATE://
+//Today, June 9, 2021, the new version of the edaman V2 API has just come out, which uses this project and which the previous version will be obsolete by 2022; please change this request to the following:   https://api.edamam.com/api/recipes/v2     
+https://gist.github.com/itoshkov/740ccac36c3b91d47202489a957bf67a  //
 async function fetchAPI() {
     const baseURL = `https://api.edamam.com/search?q=${searchQuery}&app_id=${APP_ID}&app_key=${APP_KEY}&from=0&to=100`;
     const response = await fetch(baseURL);
