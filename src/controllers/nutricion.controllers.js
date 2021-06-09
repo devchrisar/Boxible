@@ -1,6 +1,7 @@
 import views from '../views/nutricion.html'
 import '../css/nutricion.css'
 import '../source/fontawesome.js'
+require('dotenv').config();
 export default () =>{
     const divElement = document.createElement('div');
     divElement.innerHTML = views;
@@ -11,7 +12,7 @@ export default () =>{
     const searchResultDiv = divElement.querySelector(".resultado_bsqFood");
     const container = divElement.querySelector(".NUcontenedor");
     const APP_ID = 'bf8d255a';
-    const APP_KEY = '14c3dacd262d5fe0ae71a433dbcce09f'
+    const APP_KEY = process.env.API_KEY;
 let searchQuery = "";
 
 function generateHTML(results) {
